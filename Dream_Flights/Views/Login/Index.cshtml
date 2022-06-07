@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container" style="width:50%;margin-top:10%">
+    <div class="card">
+        <div class="card-body">
+            <form asp-controller="Login" asp-action="LoginUser" method="post">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <hr />
+                <button type="submit" class="btn btn-primary" style="float:right">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
