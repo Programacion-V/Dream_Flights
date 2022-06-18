@@ -7,15 +7,18 @@
         <div class="card-body">
             <form asp-controller="Login" asp-action="LoginUser" method="post">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                    <input type="email" required class="form-control" name="email" placeholder="name@example.com">
                     <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" required class="form-control" name="password" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
                 <hr />
-                <button type="submit" class="btn btn-primary" style="float:right">Login</button>
+                <button type="submit" class="btn btn-success" style="float:right">Login</button>
+            </form>
+            <form asp-controller="SignIn" asp-action="Index" method="post">
+                <button type="submit" class="btn btn-primary" style="float:left">Sign In</button>
             </form>
         </div>
     </div>

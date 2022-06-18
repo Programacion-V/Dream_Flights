@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+                <form asp-controller="SignIn" asp-action="CreateUser" method="post" class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-4">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">First name</label>
+                        <input type="text" class="form-control" name="first_name" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Last name</label>
+                        <input type="text" class="form-control" name="last_name" required>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                      <div style="margin-top:2%" class="col-md-4">
+                        <label class="form-label">Email</label>
+                        <div class="input-group has-validation">
+                          <input type="email" class="form-control" name="email" aria-describedby="inputGroupPrepend" required>
+                          <div class="invalid-feedback">
+                            Please enter an Email.
+                          </div>
+                        </div>
+                      </div>
+                      <div style="margin-top:2%"class="col-md-4">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid password.
+                        </div>
+                      </div>
+                      <div style="margin-top:2%" class="col-md-4">
+                        <label class="form-label">Repeat Password</label>
+                        <input type="password" class="form-control" name="password2" required>
+                        <div class="invalid-feedback">
+                          Please provide a valid password.
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button style="margin-top:2%" class="btn btn-success" type="submit">Create user</button>
+                      </div>
+                </form>
+        </div>
+    </div>
+</div>
