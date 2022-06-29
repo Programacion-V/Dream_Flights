@@ -1,0 +1,27 @@
+﻿
+<div class="text-center">
+    <div class="container" style="width:100%;margin-top:2%">
+        <div class="row">
+            <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
+                <div class="card" style="width: 18rem;margin-left:1%;margin-top:1%">
+                    <div class="form-floating mb-3">
+                        <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Name">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" name="phone" class="form-control" id="floatingPassword" placeholder="Phone">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="d-flex pt-1">
+                        <div class="file-upload-wrapper">
+                            <input type="file" name="photo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-primary me-1 flex-grow-1">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
