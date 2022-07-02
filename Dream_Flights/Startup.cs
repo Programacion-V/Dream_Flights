@@ -54,7 +54,7 @@ namespace Dream_Flights
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Index}/{id?}");
+                    pattern: "{controller=Started}/{action=Index}/{id?}");
             });
         }
     }

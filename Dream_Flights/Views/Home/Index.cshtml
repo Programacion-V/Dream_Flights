@@ -25,23 +25,9 @@
                                                  class="img-fluid" style="width: 180px; border-radius: 10px;">
                                         </div>
                                         <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-1">@ViewBag.User.per_name</h5>
+                                            <h5 class="mb-1">@ViewBag.User.per_name @ViewBag.User.per_first_name @ViewBag.User.per_last_name </h5>
                                             <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.rol_name</p>
-                                            <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
-                                                 style="background-color: #efefef;">
-                                                <div>
-                                                    <p class="small text-muted mb-1">Articles</p>
-                                                    <p class="mb-0">41</p>
-                                                </div>
-                                                <div class="px-3">
-                                                    <p class="small text-muted mb-1">Followers</p>
-                                                    <p class="mb-0">976</p>
-                                                </div>
-                                                <div>
-                                                    <p class="small text-muted mb-1">Rating</p>
-                                                    <p class="mb-0">8.5</p>
-                                                </div>
-                                            </div>
+                                            <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.per_email</p>
                                             <form asp-action="UpdatePhoto" asp-controller="Home" method="post" enctype="multipart/form-data">
                                                 <div class="d-flex pt-1">
                                                     <div class="file-upload-wrapper">

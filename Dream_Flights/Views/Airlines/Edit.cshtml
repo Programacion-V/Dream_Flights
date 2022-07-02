@@ -5,12 +5,26 @@
             <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
                 <div class="card" style="width: 18rem;margin-left:1%;margin-top:1%">
                     <div class="form-floating mb-3">
-                        <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Name">
+                        <input type="text" name="name" class="form-control" id="floatingname" placeholder="Name">
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" name="phone" class="form-control" id="floatingPassword" placeholder="Phone">
+                        <input type="text" name="phone" class="form-control" id="floatingphone" placeholder="Phone">
                         <label for="floatingPassword">Password</label>
+                    </div>
+                     <div class="form-floating">
+                       <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="drocountry" name="drocountry" data-bs-toggle="dropdown" aria-expanded="false">
+                                Country
+                              </button>
+                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           @foreach (var item in ViewBag.CountriesModel)
+                           {  
+                                <li><a class="dropdown-item" href="">@item.cou_name</a></li>
+                           }
+                           </ul>
+                            </div>
+                        
                     </div>
                     <div class="d-flex pt-1">
                         <div class="file-upload-wrapper">

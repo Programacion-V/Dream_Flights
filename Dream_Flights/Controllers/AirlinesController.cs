@@ -41,17 +41,18 @@ namespace Dream_Flights.Controllers
 
         private List<Airline> LoadAirlines()
         {
-            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("GetAirlines", null);
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_airlines", null);
             List<Airline> airlineList = new List<Airline>();
 
             foreach (DataRow row in ds.Rows)
             {
                 airlineList.Add(new Airline()
                 {
-                    Id = Convert.ToInt16(row["Id"]),
-                    Name = row["Name"].ToString(),
-                    Photo = row["Photo"].ToString(),
-                    Phone = row["Phone"].ToString(),
+                    id_airline = Convert.ToInt16(row["id_airline"]),
+                    air_name = row["air_name"].ToString(),
+                    air_img = row["air_img"].ToString(),
+                    air_phone = row["air_phone"].ToString(),
+                    air_country = row["cou_name"].ToString()
                 });
             }
 
@@ -60,28 +61,52 @@ namespace Dream_Flights.Controllers
 
         public ActionResult Edit()
         {
+            ViewBag.CountriesModel = LoadCountries();
             return View();
         }
 
-        public ActionResult Save(string name, string phone, IFormFile photo)
+        private List<CountriesModel> LoadCountries()
         {
-            string fileName = name + new FileInfo(photo.FileName).Extension;
-            string filePath = Path.Combine("/Images/", fileName);
-            string localFileName = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images"), fileName);
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_countries", null);
+            List<CountriesModel> countriesList = new List<CountriesModel>();
 
-            using (var stream = new FileStream(localFileName, FileMode.Create))
+            foreach (DataRow row in ds.Rows)
             {
-                photo.CopyTo(stream);
+                countriesList.Add(new CountriesModel()
+                {
+                    id_country = Convert.ToInt16(row["id_country"]),
+                    cou_name = row["cou_name"].ToString(),
+                    cou_img = row["cou_img"].ToString(),
+                });
             }
 
+            return countriesList;
+        }
+
+        public ActionResult Save(string name, string phone, IFormFile photo,int id_country)
+        {
+            string filePath;
+            if (photo != null){
+                string fileName = name + new FileInfo(photo.FileName).Extension;
+                filePath = Path.Combine("/Images/", fileName);
+                string localFileName = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images"), fileName);
+
+                using (var stream = new FileStream(localFileName, FileMode.Create))
+                {
+                    photo.CopyTo(stream);
+                }
+            }else {
+                filePath = Path.Combine("/Images/", "default.jpg");
+            }
             List<SqlParameter> param = new List<SqlParameter>()
             {
                 new SqlParameter("@name", name),
                 new SqlParameter("@phone", phone),
-                new SqlParameter("@photo", filePath)
+                new SqlParameter("@photo", filePath),
+                new SqlParameter("@id_country", id_country)
             };
 
-            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("SaveAirline", param);
+            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_airline", param);
 
             return RedirectToAction("Index", "Airlines");
         }

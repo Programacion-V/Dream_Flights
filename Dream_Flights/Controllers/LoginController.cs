@@ -23,6 +23,7 @@ namespace Dream_Flights.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetString("user", JsonSerializer.Serialize(user));
+                //if(user.rol_name == "")
                 return RedirectToAction("Index", "Home");
             }
             else

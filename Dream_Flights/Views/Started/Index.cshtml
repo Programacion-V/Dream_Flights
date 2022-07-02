@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid" style="width: 100%;height: 100%;padding-left: 0px;padding-right: 0px;">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="">
+        <div class="carousel-inner" style="">
+            @{
+                var first = true;
+            }
+            @foreach (var item in ViewBag.Started)
+            {
+                <div class="carousel-item @(first?Html.Raw("active"):Html.Raw(""))" style="">
+                    <img class="img-fluid" style="width: 100%; height: 615px" src="@item.Photo" alt="">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Dream Flights</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                      </div>
+                </div>
+                first = false;
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
