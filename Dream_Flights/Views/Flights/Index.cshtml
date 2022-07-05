@@ -1,0 +1,190 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script type="text/javascript">
+   $(function () {
+       $('#datetimepicker6').datetimepicker();
+       $('#datetimepicker7').datetimepicker({
+   useCurrent: false //Important! See issue #1075
+   });
+       $("#datetimepicker6").on("dp.change", function (e) {
+           $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+       });
+       $("#datetimepicker7").on("dp.change", function (e) {
+           $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+       });
+   });
+</script>
+
+<div class="container-container-fluid">
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a data-toggle="tab" class="nav-link active" aria-current="page" href="#new_flight_arrival">New Flight Arrival</a> </li>
+      <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#new_flight_departure">New Flight Departure</a></li>
+      <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#flights_arrivals">Flights Arrivals</a></li>
+      <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#flights_departures">Flights Departures</a></li>
+    </ul>
+
+  <div class="tab-content container-fluid">
+    <div id="new_flight_arrival" class="tab-pane fade in active col-6">
+     <div class="card" style="margin-top:5px">
+        <form asp-controller="Flights" asp-action="SaveFlightArrival" method="post">
+        <div class="card-header">
+            <h4 style="text-align:center">New Flight Arrival</h4>
+        </div>
+        <div class="card-body">
+             <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" required class="form-control" name="origen" placeholder="Origen">
+                    </div>
+                     <div class="form-floating mb-3">
+                           <input type="date" id="origen_date" required class="form-control" name="origen_date" placeholder="Date">
+                    </div>
+                     <div class="form-floating mb-3">
+                        <input type="time" id="origen_time" required class="form-control" name="origen_time" placeholder="Time">
+                    </div>
+                     <div class="form-floating mb-3">
+                        <input type="text" required class="form-control" name="origen_door" placeholder="Door">
+                    </div>
+                     <div class="form-floating mb-3">
+                         @Html.DropDownList("statusA", (IEnumerable<SelectListItem>)ViewBag.StatusASelectListItem, "Select Arrival Status", new { @class ="form-control" })
+                    </div>   
+                     <div class="form-floating mb-3">
+                        @Html.DropDownList("id_airline", (IEnumerable<SelectListItem>)ViewBag.AirlineSelectListItem, "Select Airline", new { @class ="form-control" })
+                    </div>   
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col">
+                     <button type="submit" class="btn btn-success" style="float:right">Save</button>
+                     </form>
+                </div>
+                 <div class="col">
+                      <form asp-controller="" asp-action="" method="post">
+                        <button type="reset" class="btn btn-danger" style="float:left">Cancel</button>
+                    </form>
+                 </div>
+            </div>        
+        </div>
+    </div>
+    </div>
+    <div id="new_flight_departure" class="tab-pane fade col-6">
+      <div class="card" style="margin-top:5px">
+        <form asp-controller="Flights" asp-action="SaveFlightDeparture" method="post">
+        <div class="card-header">
+            <h4 style="text-align:center">New Flight Departure</h4>
+        </div>
+        <div class="card-body">
+             <div class="row">
+                <div class="col">
+                     <div class="form-floating mb-3">
+                        <input type="text" required class="form-control" name="destination" placeholder="Destination">
+                    </div>
+                       <div class="form-floating mb-3">
+                        <input type="date" id="departure_date" required class="form-control" name="departure_date" placeholder="Date">
+                    </div>
+                     <div class="form-floating mb-3">
+                        <input type="time" required class="form-control" name="departure_time" placeholder="Time">
+                    </div>
+                     <div class="form-floating mb-3">
+                        <input type="text" required class="form-control" name="departure_door" placeholder="Door">
+                    </div>
+                     <div class="form-floating mb-3">
+                        @Html.DropDownList("statusD", (IEnumerable<SelectListItem>)ViewBag.StatusDSelectListItem, "Select Departure Status", new { @class ="form-control" })
+                    </div>
+                    <div class="form-floating mb-3">
+                        @Html.DropDownList("id_airline", (IEnumerable<SelectListItem>)ViewBag.AirlineSelectListItem, "Select Airline", new { @class ="form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col">
+                     <button type="submit" class="btn btn-success" style="float:right">Save</button>
+                     </form>
+                </div>
+                 <div class="col">
+                      <form asp-controller="" asp-action="" method="post">
+                        <button type="reset" class="btn btn-danger" style="float:left">Cancel</button>
+                    </form>
+                 </div>
+            </div>        
+        </div>
+    </div>
+    </div>
+
+    <div id="flights_arrivals" class="tab-pane fade">
+        <div class="card">
+            <div class="card-header">
+                 <h4 style="text-align:center">Flights Arrivals</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive table-hover">  
+                    <tr>  
+                        <th>Flight Number </th>  
+                        <th>Airline </th>  
+                        <th>Origen </th>  
+                        <th>Date</th>  
+                        <th>Time</th>  
+                        <th>Door</th>  
+                        <th>Status</th>  
+                    </tr>  
+                    @foreach (var item in ViewBag.flightsListArrivals)  
+                    {  
+                        <tr>  
+                            <td>@item.fli_number</td>  
+                            <td>@item.air_name</td>  
+                            <td>@item.place</td>  
+                            <td>@item.date</td>  
+                            <td>@item.time</td>  
+                            <td>@item.door</td>  
+                            <td>@item.description</td>  
+  
+                        </tr>  
+                    }  
+                </table>  
+            </div>
+            <div class="card-footer"></div>
+        <div>
+    </div>
+
+    <div id="flights_departures" class="tab-pane fade">
+     <div class="card">
+            <div class="card-header">
+                 <h4 style="text-align:center">Flights Departures</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-responsive table-hover">  
+                    <tr>  
+                        <th>Flight Number </th>  
+                        <th>Airline </th>  
+                        <th>Destination </th>  
+                        <th>Date</th>  
+                        <th>Time</th>  
+                        <th>Door</th>  
+                        <th>Status</th>  
+                    </tr>  
+                    @foreach (var item in ViewBag.flightsListDepartures)  
+                    {  
+                        <tr>  
+                            <td>@item.fli_number</td>  
+                            <td>@item.air_name</td>  
+                            <td>@item.place</td>  
+                            <td>@item.date</td>  
+                            <td>@item.time</td>  
+                            <td>@item.door</td>  
+                            <td>@item.description</td>  
+  
+                        </tr>  
+                    }  
+                </table>  
+            </div>
+            <div class="card-footer"></div>
+        <div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
-﻿
+﻿@using System.Collections
+
 <div class="text-center">
-    <div class="container" style="width:40%;margin-top:2%">
+    <div class="container" style="width:100%;margin-top:2%">
        
             <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
               <div class="row">
@@ -11,24 +12,16 @@
                     </div>
                     <div class="card-body">
                         <div class="form-outline mb-4">
-                          <input type="text" id="name" name="name" class="form-control" />
+                          <input type="text" id="name" name="name" class="form-control" required/>
                           <label class="form-label" for="form6Example4">Airline Name</label>
                         </div>
                         <div class="form-outline mb-4">
-                          <input type="text" id="phone" name="phone" class="form-control" />
+                          <input type="text" id="phone" name="phone" class="form-control" required/>
                           <label class="form-label" for="form6Example4">Airline Phone</label>
                         </div>
+                        
                         <div class="form-outline mb-4">
-
-                            @Html.DropDownListFor(CountriesModel => CountriesModel.id_country, (IEnumerable<SelectListItem>)ViewBag.cou_name, new { @class = "form-control" })
-                            <select class="form-select" name="country" aria-label="Select Country">
-                              <option selected>Select Country</option>
-                              @foreach (var item in @ViewBag.CountriesModel)
-                              {
-                              <option value="@item.id_country">@item.cou_name</option>
-                              }
-                            </select>
-                              
+                            @Html.DropDownList("id_country", (IEnumerable<SelectListItem>)ViewBag.CountriesModel, null, new { @class ="form-control" })
                         </div>
                         <div class="form-outline mb-4">
                             <div class="file-upload-wrapper">
@@ -37,11 +30,16 @@
                         </div>
                     </div>
                     <div class=card-footer>
-                            <button type="submit" class="btn btn-outline-success">Save</button>
+                            <button type="submit" class="btn btn-outline-success" style="float:right">Save</button>
+                    </form>
+                    <form asp-controller="Airlines" asp-action="Index" method="post">
+                        <button type="submit" class="btn btn-outline-danger" style="float:left">Cancel</button>
+                    </form>
+                            
                     </div>
                   </div>
                 </div>
               </div>
-            </form>
+            
     </div>
 </div>

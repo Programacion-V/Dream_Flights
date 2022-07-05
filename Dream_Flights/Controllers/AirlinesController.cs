@@ -2,6 +2,7 @@
 using Dreams_Flights.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -65,18 +66,18 @@ namespace Dream_Flights.Controllers
             return View();
         }
 
-        private List<CountriesModel> LoadCountries()
+        private List<SelectListItem> LoadCountries()
         {
             DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_countries", null);
-            List<CountriesModel> countriesList = new List<CountriesModel>();
+            List<SelectListItem> countriesList = new List<SelectListItem>();
 
             foreach (DataRow row in ds.Rows)
             {
-                countriesList.Add(new CountriesModel()
+                countriesList.Add(new SelectListItem()
                 {
-                    id_country = Convert.ToInt16(row["id_country"]),
-                    cou_name = row["cou_name"].ToString(),
-                    cou_img = row["cou_img"].ToString(),
+                    Text = row["cou_name"].ToString(),
+                    Value = row["id_country"].ToString(),
+                   
                 });
             }
 
@@ -88,7 +89,7 @@ namespace Dream_Flights.Controllers
             string filePath;
             if (photo != null){
                 string fileName = name + new FileInfo(photo.FileName).Extension;
-                filePath = Path.Combine("/Images/", fileName);
+                filePath = Path.Combine("Images/", fileName);
                 string localFileName = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images"), fileName);
 
                 using (var stream = new FileStream(localFileName, FileMode.Create))

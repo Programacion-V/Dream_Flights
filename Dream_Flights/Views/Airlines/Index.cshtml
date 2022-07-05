@@ -9,10 +9,11 @@
             @foreach (var item in @ViewBag.Arlines)
             {
                 <div class="card" style="width: 18rem;margin-left:1%;margin-top:1%">
-                    <img src="@item.Photo" class="card-img-top" style="width:100%;height:90px">
+                    <img src="@item.air_img" class="card-img-top" style="width:100%;height:90px">
                     <div class="card-body">
-                        Name: <h5 class="card-title">@item.Name</h5>
-                        Phone: <p class="card-text">@item.Phone</p>
+                        Name: <h5 class="card-title">@item.air_name</h5>
+                        Phone: <p class="card-text">@item.air_phone</p>
+                        Country: <p class="card-text">@item.air_country</p>
                     </div>
                 </div>
             }
