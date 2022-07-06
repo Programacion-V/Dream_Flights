@@ -14,5 +14,6 @@ namespace Dream_Flights.Models
         public string per_email { get; set; }
         public string per_img { get; set; }
         public string rol_name { get; set; }
+        public string id_rol { get; set; }
     }
 }

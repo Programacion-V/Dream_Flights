@@ -60,6 +60,7 @@ namespace Dream_Flights.Controllers
                     per_email = email,
                     per_img = ds.Rows[0]["per_img"].ToString(),
                     rol_name = ds.Rows[0]["rol_name"].ToString(),
+                    id_rol = ds.Rows[0]["id_rol"].ToString(),
                 };
 
                 return user;

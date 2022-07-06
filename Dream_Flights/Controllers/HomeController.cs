@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
@@ -26,6 +28,7 @@ namespace Dream_Flights.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user")))
             {
                 ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
+
 
                 return View();
             }
@@ -57,6 +60,28 @@ namespace Dream_Flights.Controllers
             HttpContext.Session.Clear();
 
             return RedirectToAction("Index", "Login");
+        }
+
+        public ActionResult GetPagesByRol(string id)
+        {
+            List<SqlParameter> param = new List<SqlParameter>()
+            {
+                new SqlParameter("@id_rol", id),
+            };
+
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("GetPagesByRol", param);
+
+            List<Pages> pages = new List<Pages>();
+
+            foreach (DataRow dr in ds.Rows)
+            {
+                pages.Add(new Pages()
+                {
+                    Page = dr["page_name"].ToString()
+                });
+            }
+
+            return Json(pages);
         }
     }
 }

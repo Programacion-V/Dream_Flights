@@ -2,6 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
+@Html.Partial("userAccess") 
+
 <div class="text-center">
     <div class="card">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -64,7 +66,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                           <div class="col-6">
+                            <div class="col-6">
                                 <form asp-controller="Flights" asp-action="SaveFlightDeparture" method="post">
                                     <div class="form-floating mb-3">
                                         <input type="text" required class="form-control" name="destination" placeholder="Destination">

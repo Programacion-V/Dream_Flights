@@ -17,7 +17,7 @@ namespace Dream_Flights.Controllers
         {
             //if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user")))
             // {
-            // ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
+                ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
                 ViewBag.AirlineSelectListItem = LoadAirlines();
                 ViewBag.StatusASelectListItem = LoadStatus_A();
                 ViewBag.StatusDSelectListItem = LoadStatus_D();
