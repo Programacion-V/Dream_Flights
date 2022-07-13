@@ -69,7 +69,7 @@ namespace Dream_Flights.Controllers
                 new SqlParameter("@id_rol", id),
             };
 
-            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("GetPagesByRol", param);
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_GetPagesByRol", param);
 
             List<Pages> pages = new List<Pages>();
 

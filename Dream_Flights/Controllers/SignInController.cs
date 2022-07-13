@@ -21,22 +21,33 @@ namespace Dream_Flights.Controllers
             return View();
         }
 
-        public CreateUserModel CreateUser(string name, string first_name, string last_name, string password, string email)
+        public CreateUserModel CreateUser(string first_name, string last_name, string pass1,string pass2, string email)
         {
-            List<SqlParameter> param = new List<SqlParameter>();
+            if (pass1 == pass2)
+            {
 
-            param.Add(new SqlParameter("@per_name", name));
-            param.Add(new SqlParameter("@per_first_name", first_name));
-            param.Add(new SqlParameter("@per_last_name", last_name));
-            param.Add(new SqlParameter("@per_email", email));
-            param.Add(new SqlParameter("@per_img", "default.jpg"));
-            param.Add(new SqlParameter("@user_password", password));
-            param.Add(new SqlParameter("@id_rol", 5));
+                List<SqlParameter> param = new List<SqlParameter>();
+
+                param.Add(new SqlParameter("@per_first_name", first_name));
+                param.Add(new SqlParameter("@per_last_name", last_name));
+                param.Add(new SqlParameter("@per_email", email));
+                param.Add(new SqlParameter("@per_img", "default.jpg"));
+                param.Add(new SqlParameter("@user_password", pass1));
+                param.Add(new SqlParameter("@id_rol", 5));
 
 
-            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_user", param);
+                DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_user", param);
 
-            return null;
+                return null;
+            }
+            else {
+
+
+                return null;
+            }
+
+
+            
         }
 
         // GET: SignInController/Details/5
