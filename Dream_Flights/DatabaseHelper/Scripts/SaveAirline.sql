@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[SaveAirline] 
+CREATE PROCEDURE [dbo].[sp_save_airline] 
 	@name VARCHAR(50),
 	@phone VARCHAR(50),
 	@photo VARCHAR(50)
