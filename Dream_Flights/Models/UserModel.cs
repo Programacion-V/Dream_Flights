@@ -8,7 +8,6 @@ namespace Dream_Flights.Models
     public class UserModel
     {
         public string id_person { get; set; }
-        public string per_name { get; set; }
         public string per_first_name { get; set; }
         public string per_last_name { get; set; }
         public string per_email { get; set; }

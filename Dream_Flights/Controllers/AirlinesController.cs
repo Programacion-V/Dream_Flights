@@ -24,7 +24,7 @@ namespace Dream_Flights.Controllers
             {
                 ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
                 ViewBag.Arlines = LoadAirlines();
-
+                ViewBag.CountriesModel = LoadCountries();
                 return View();
             }
             else
@@ -62,7 +62,7 @@ namespace Dream_Flights.Controllers
 
         public ActionResult Edit()
         {
-            ViewBag.CountriesModel = LoadCountries();
+           
             return View();
         }
 

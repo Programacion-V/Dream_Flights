@@ -54,7 +54,6 @@ namespace Dream_Flights.Controllers
                 UserModel user = new UserModel()
                 {
                     id_person = ds.Rows[0]["id_person"].ToString(),
-                    per_name = ds.Rows[0]["per_name"].ToString(),
                     per_first_name = ds.Rows[0]["per_first_name"].ToString(),
                     per_last_name = ds.Rows[0]["per_last_name"].ToString(),
                     per_email = email,
