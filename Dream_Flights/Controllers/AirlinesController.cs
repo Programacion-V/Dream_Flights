@@ -77,17 +77,18 @@ namespace Dream_Flights.Controllers
                 {
                     Text = row["cou_name"].ToString(),
                     Value = row["id_country"].ToString(),
-                   
+
                 });
             }
 
             return countriesList;
         }
 
-        public ActionResult Save(string name, string phone, IFormFile photo,int id_country)
+        public ActionResult Save(string name, string phone, IFormFile photo, int id_country)
         {
             string filePath;
-            if (photo != null){
+            if (photo != null)
+            {
                 string fileName = name + new FileInfo(photo.FileName).Extension;
                 filePath = Path.Combine("Images/", fileName);
                 string localFileName = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images"), fileName);
@@ -96,7 +97,9 @@ namespace Dream_Flights.Controllers
                 {
                     photo.CopyTo(stream);
                 }
-            }else {
+            }
+            else
+            {
                 filePath = Path.Combine("/Images/", "default.jpg");
             }
             List<SqlParameter> param = new List<SqlParameter>()

@@ -21,33 +21,21 @@ namespace Dream_Flights.Controllers
             return View();
         }
 
-        public CreateUserModel CreateUser(string first_name, string last_name, string pass1,string pass2, string email)
+        public CreateUserModel CreateUser(string first_name, string last_name, string pass1, string email)
         {
-            if (pass1 == pass2)
-            {
+            List<SqlParameter> param = new List<SqlParameter>();
 
-                List<SqlParameter> param = new List<SqlParameter>();
-
-                param.Add(new SqlParameter("@per_first_name", first_name));
-                param.Add(new SqlParameter("@per_last_name", last_name));
-                param.Add(new SqlParameter("@per_email", email));
-                param.Add(new SqlParameter("@per_img", "default.jpg"));
-                param.Add(new SqlParameter("@user_password", pass1));
-                param.Add(new SqlParameter("@id_rol", 5));
+            param.Add(new SqlParameter("@per_first_name", first_name));
+            param.Add(new SqlParameter("@per_last_name", last_name));
+            param.Add(new SqlParameter("@per_email", email));
+            param.Add(new SqlParameter("@per_img", "default.jpg"));
+            param.Add(new SqlParameter("@user_password", pass1));
+            param.Add(new SqlParameter("@id_rol", 5));
 
 
-                DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_user", param);
+            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_user", param);
 
-                return null;
-            }
-            else {
-
-
-                return null;
-            }
-
-
-            
+            return null;
         }
 
         // GET: SignInController/Details/5

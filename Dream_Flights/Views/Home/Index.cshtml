@@ -1,45 +1,47 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@{ ViewData["Title"] = "Home Page";
 }
-
 @Html.Partial("userAccess")
 
-<div class="text-center">
-    <div class="card">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Profile</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="container py-5 h-100">
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col col-md-9 col-lg-7 col-xl-5">
-                            <div class="card" style="border-radius: 15px;">
-                                <div class="card-body p-4">
-                                    <div class="d-flex text-black">
-                                        <div class="flex-shrink-0">
-                                            <img src=@ViewBag.User.per_img
-                                                 class="img-fluid" style="width: 180px; border-radius: 10px;">
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-1">@ViewBag.User.per_name @ViewBag.User.per_first_name @ViewBag.User.per_last_name </h5>
-                                            <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.rol_name</p>
-                                            <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.per_email</p>
-                                            <form asp-action="UpdatePhoto" asp-controller="Home" method="post" enctype="multipart/form-data">
-                                                <div class="d-flex pt-1">
-                                                    <div class="file-upload-wrapper">
-                                                        <input type="file" name="photo" class="form-control" />
+
+<body background="Images/Fondo login.jpeg">
+
+    <div class="text-center">
+        <div class="card border-0" style="width:60%; height:70%; margin:5% 10% 0% 20%;">
+                <ul class="nav nav-tabs bg-dark border-0" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active text-dark bg-warning border-dark" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><b>Profile</b></button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-dark bg-warning border-dark" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><b>Contact</b></button>
+                    </li>
+                </ul>
+            <div class="tab-content tex bg-dark" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="container py-5 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col col-md-9 col-lg-7 col-xl-5">
+                                <div class="card bg-dark">
+                                    <div class="card-body p-4 bg-warning text-dark border-0" style="border-radius:15px 15px; margin-left:-160px; width:600px; height:292px">
+                                        <div class="d-flex text-black">
+                                            <div class="flex-shrink-0">
+                                                <img src=@ViewBag.User.per_img
+                                                     class="img-fluid border-0" style="width: 180px; border-radius: 10px;">
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h5 class="mb-1"><b>@ViewBag.User.per_first_name @ViewBag.User.per_last_name</b></h5>
+                                                <p class="mb-2 pb-1" style="color: #2b2a2a;"><b>@ViewBag.User.rol_name</b></p>
+                                                <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.per_email</p>
+                                                <form asp-action="UpdatePhoto" asp-controller="Home" method="post" enctype="multipart/form-data">
+                                                    <div class="d-flex pt-1">
+                                                        <div class="file-upload-wrapper">
+                                                            <input type="file" name="photo" class="form-control" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="d-flex pt-1">
-                                                    <button type="submit" class="btn btn-outline-primary me-1 flex-grow-1">Update photo</button>
-                                                </div>
-                                            </form>
+                                                    <div class="d-flex pt-1">
+                                                        <button type="submit" class="btn btn-dark me-1 flex-grow-1 text-light">Update photo</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,53 +49,53 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div class="col-lg-8">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                <div class="tab-pane fade bg-dark border-0" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="col-lg-8 bg-dark border-0">
+                        <div class="card mb-4 bg-dark border-0">
+                            <div class="card-body bg-warning text-dark" style="border-radius:15px 15px; margin-top:10px; margin-left:50px; width:600px">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <b><p class="mb-0">Full Name</p></b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <b><p class="text-muted mb-0">@ViewBag.User.per_first_name @ViewBag.User.per_last_name</p></b>
+                                    </div>
                                 </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@ViewBag.User.per_name</p>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <b><p class="mb-0">Email</p></b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <b> <p class="text-muted mb-0">@ViewBag.User.per_email</p></b>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Email</p>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <b><p class="mb-0">Department</p></b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <b><p class="text-muted mb-0">@ViewBag.User.rol_name</p></b>
+                                    </div>
                                 </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@ViewBag.User.per_email</p>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <b><p class="mb-0">Phone number</p></b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <b><p class="text-muted mb-0">8707-1667</p></b>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Department</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@ViewBag.User.rol_name</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Hire Date</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@ViewBag.User.per_first_name</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <b> <p class="mb-0">Address</p></b>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <b><p class="text-muted mb-0">Bay Area, San Francisco, CA</p></b>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -102,4 +104,4 @@
             </div>
         </div>
     </div>
-</div>
+</body>

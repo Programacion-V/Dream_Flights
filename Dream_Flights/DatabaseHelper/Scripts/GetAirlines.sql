@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_get_airlines]
+CREATE PROCEDURE [dbo].[GetAirlines]
 AS
 BEGIN
 	SELECT [Id]

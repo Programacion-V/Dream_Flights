@@ -5,6 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Iconos\**" />
+    <Content Remove="Iconos\**" />
+    <EmbeddedResource Remove="Iconos\**" />
+    <None Remove="Iconos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AdminUsers.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Iconos\cerrar-sesion %281%29.png" />
+    <Content Remove="wwwroot\Iconos\cerrar-sesion %282%29.png" />
+    <Content Remove="wwwroot\Iconos\usuario.png" />
+    <Content Remove="wwwroot\Images\wallpaper_4.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>

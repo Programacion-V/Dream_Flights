@@ -4,45 +4,45 @@
 
 
 <div class="row justify-content-center">
-<div class="col-md-4">
-<div class="card">
-<header class="card-header" style="text-align: center">
-	<h4 class="card-title mt-2">Sign up</h4>
-</header>
-<article class="card-body">
- <form asp-controller="SignIn" asp-action="CreateUser" method="post" class="">  
-	<div class="form-row">
-		<div class="col form-group" >
-			<label>First name </label>   
-		  	<input type="text" class="form-control" placeholder="" name="first_name" required>
-		</div> <!-- form-group end.// -->
-		<div class="col form-group">
-			<label>Last name</label>
-		  	<input type="text" class="form-control" placeholder="" name="last_name" required>
-		</div> <!-- form-group end.// -->
-	</div> <!-- form-row end.// -->
+    <div class="col-md-4">
+        <div class="card">
+            <header class="card-header" style="text-align: center">
+                <h4 class="card-title mt-2">Sign up</h4>
+            </header>
+            <article class="card-body">
+                <form asp-controller="SignIn" asp-action="CreateUser" method="post" class="">
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>First name </label>
+                            <input type="text" class="form-control" placeholder="" name="first_name" required>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Last name</label>
+                            <input type="text" class="form-control" placeholder="" name="last_name" required>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
 
-	<div class="form-group">
-		<label>Email address</label>
-		<input type="email" class="form-control" placeholder="" name="email" required>
-	</div> <!-- form-group end.// -->
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" class="form-control" placeholder="" name="email" required>
+                    </div> <!-- form-group end.// -->
 
-    <div class="form-row">
-		<div class="col form-group">
-			<label>Create password</label>
-	        <input class="form-control" type="password" name="pass1" required>
-		</div> <!-- form-group end.// -->
-		<div class="col form-group">
-			<label>Confirme password</label>
-	        <input class="form-control" type="password" name="pass2" required>
-		</div> <!-- form-group end.// -->
-	</div> <!-- form-row end.// -->
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Create password</label>
+                            <input class="form-control" type="password" name="pass1" required>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Confirme password</label>
+                            <input class="form-control" type="password" name="pass2" required>
+                        </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-success btn-block"> Register  </button>
-    </div> <!-- form-group// -->      
-</form>
-</article> <!-- card-body end .// -->
-<div class="border-top card-body text-center">Have an account? <a href="/Login">Log In</a></div>
-</div> <!-- card.// -->
-</div> <!-- col.//-->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block"> Register  </button>
+                    </div> <!-- form-group// -->
+                </form>
+            </article> <!-- card-body end .// -->
+            <div class="border-top card-body text-center">Have an account? <a href="/Login">Log In</a></div>
+        </div> <!-- card.// -->
+    </div> <!-- col.//-->

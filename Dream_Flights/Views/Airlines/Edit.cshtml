@@ -1,47 +1,45 @@
 ﻿@using System.Collections
 
-@Html.Partial("userAccess") 
+
 
 <div class="text-center">
     <div class="container" style="width:100%;margin-top:2%">
-       
-            <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
-              <div class="row">
+
+        <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
+            <div class="row">
                 <div class="col-md-4 mb-4">
-                  <div class="card mb-4">
-                    <div class="card-header py-3">
-                      <h5 class="mb-0">New Airline</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-outline mb-4">
-                          <input type="text" id="name" name="name" class="form-control" required/>
-                          <label class="form-label" for="form6Example4">Airline Name</label>
+                    <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="mb-0">New Airline</h5>
                         </div>
-                        <div class="form-outline mb-4">
-                          <input type="text" id="phone" name="phone" class="form-control" required/>
-                          <label class="form-label" for="form6Example4">Airline Phone</label>
-                        </div>
-                        
-                        <div class="form-outline mb-4">
-                            @Html.DropDownList("id_country", (IEnumerable<SelectListItem>)ViewBag.CountriesModel, null, new { @class ="form-control" })
-                        </div>
-                        <div class="form-outline mb-4">
-                            <div class="file-upload-wrapper">
-                                <input type="file" name="photo" class="form-control" />
+                        <div class="card-body">
+                            <div class="form-outline mb-4">
+                                <input type="text" id="name" name="name" class="form-control" required />
+                                <label class="form-label" for="form6Example4">Airline Name</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="phone" name="phone" class="form-control" required />
+                                <label class="form-label" for="form6Example4">Airline Phone</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                @Html.DropDownList("id_country", (IEnumerable<SelectListItem>)ViewBag.CountriesModel, null, new { @class = "form-control" })
+                            </div>
+                            <div class="form-outline mb-4">
+                                <div class="file-upload-wrapper">
+                                    <input type="file" name="photo" class="form-control" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class=card-footer>
+                        <div class=card-footer>
                             <button type="submit" class="btn btn-outline-success" style="float:right">Save</button>
-                    </form>
-                    <form asp-controller="Airlines" asp-action="Index" method="post">
-                        <button type="submit" class="btn btn-outline-danger" style="float:left">Cancel</button>
-                    </form>
-                            
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
+        </form>
+        <form asp-controller="Airlines" asp-action="Index" method="post">
+            <button type="submit" class="btn btn-outline-danger" style="float:left">Cancel</button>
+        </form>
+
+
     </div>
+</div>
+</div>
 </div>
