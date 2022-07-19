@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Dream_Flights.Controllers
@@ -16,6 +17,7 @@ namespace Dream_Flights.Controllers
         // GET: AdminUsersController
         public ActionResult Index()
         {
+            ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
             ViewBag.Users = LoadUsers();
             ViewBag.Rols = LoadRols();
             return View();
@@ -23,7 +25,7 @@ namespace Dream_Flights.Controllers
 
         public List<UserModel> LoadUsers()
         {
-            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_Users", null);
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_users", null);
             List<UserModel> userList = new List<UserModel>();
 
             foreach (DataRow row in ds.Rows)
@@ -48,7 +50,7 @@ namespace Dream_Flights.Controllers
 
         private List<SelectListItem> LoadRols()
         {
-            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_rols", null);
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_roles", null);
             List<SelectListItem> rolList = new List<SelectListItem>();
 
             foreach (DataRow row in ds.Rows)
