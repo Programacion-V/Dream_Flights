@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "AdminUsers";
+}
+
+@*@@Html.Partial("userAccess")*@
+
+<div class="card">
+    <div class="card-header">
+        <h4 style="text-align:center">Users</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th>Id </th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Rol</th>
+            </tr>
+            @foreach (var item in ViewBag.Users)
+            {
+                <tr>
+                    <td>@item.id_user</td>
+                    <td>@item.per_first_name</td>
+                    <td>@item.per_last_name</td>
+                    <td>@item.per_email</td>
+                    <td>@Html.DropDownList("DropRolName", (IEnumerable<SelectListItem>) ViewBag.Rols, item.rol_name, new { @class = "form-control" })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
