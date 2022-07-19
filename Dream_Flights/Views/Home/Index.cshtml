@@ -2,11 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<<<<<<< HEAD
-@Html.Partial("userAccess") 
-=======
-@Html.Partial("userAccess")
->>>>>>> 504b60f8cd8da67e94b530137f27f1290f8e489d
+@*@Html.Partial("userAccess") *@
 
 <div class="text-center">
     <div class="card">
@@ -31,7 +27,7 @@
                                                  class="img-fluid" style="width: 180px; border-radius: 10px;">
                                         </div>
                                         <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-1">@ViewBag.User.per_first_name @ViewBag.User.per_last_name </h5>
+                                            <h5 class="mb-1">@ViewBag.User.per_name @ViewBag.User.per_first_name @ViewBag.User.per_last_name </h5>
                                             <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.rol_name</p>
                                             <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.per_email</p>
                                             <form asp-action="UpdatePhoto" asp-controller="Home" method="post" enctype="multipart/form-data">
@@ -61,7 +57,7 @@
                                     <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">@ViewBag.User.per_first_name @ViewBag.User.per_last_name</p>
+                                    <p class="text-muted mb-0">@ViewBag.User.per_name</p>
                                 </div>
                             </div>
                             <hr>
