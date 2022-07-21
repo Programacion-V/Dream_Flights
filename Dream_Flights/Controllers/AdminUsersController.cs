@@ -66,6 +66,19 @@ namespace Dream_Flights.Controllers
             return rolList;
         }
 
+        public ActionResult UpdateUserRol(string id_user, string rol_id)
+        {
+            List<SqlParameter> param = new List<SqlParameter>()
+            {
+                new SqlParameter("@id_user", id_user),
+                new SqlParameter("@new_id_rol", rol_id)
+            };
+
+            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_update_user_rol", param);
+
+            return Ok();
+        }
+
         // GET: AdminUsersController/Details/5
         public ActionResult Details(int id)
         {

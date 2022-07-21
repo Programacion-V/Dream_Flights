@@ -1,34 +1,79 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "AdminUsers";
 }
 
 @Html.Partial("userAccess")
 
-<div class="card">
-    <div class="card-header">
-        <h4 style="text-align:center">User Management</h4>
-    </div>
-    <div class="card-body">
-        <table class="table table-bordered table-responsive table-hover">
-            <tr>
-                <th>Id </th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Rol</th>
-            </tr>
-            @foreach (var item in ViewBag.Users)
-            {
-                <tr>
-                    <td>@item.id_user</td>
-                    <td>@item.per_first_name</td>
-                    <td>@item.per_last_name</td>
-                    <td>@item.per_email</td>
-                    <td>@Html.DropDownList("DropRolName", (IEnumerable<SelectListItem>) ViewBag.Rols, item.rol_name, new { @class = "form-control" })</td>
-                </tr>
-            }
-        </table>
+<div class="text-center" style="width: 100%; height: 136%; overflow-y: scroll;">
+    <div class="card">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="NewFlightArrival-tab" data-bs-toggle="tab" data-bs-target="#NewFlightArrival" type="button" role="tab" aria-controls="home" aria-selected="true">Users</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="NewFlightArrival" role="tabpanel" aria-labelledby="NewFlightArrival-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 style="text-align:center">User Management</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-responsive table-hover">
+                            <tr>
+                                <th>Id </th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                            </tr>
+                            @foreach (var item in ViewBag.Users)
+                            {
+                                <tr onchange="Save(@item.id_user)">
+                                    <td>@item.id_user</td>
+                                    <td>@item.per_first_name</td>
+                                    <td>@item.per_last_name</td>
+                                    <td>@item.per_email</td>
+                                    <td>@Html.DropDownList("DropRolName"+@item.id_user, (IEnumerable<SelectListItem>) ViewBag.Rols, item.rol_name, new { @class = "form-control" })</td>
+                                </tr>
+                            }
+                        </table>
+                        <div id="myModal" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">User management</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>User Updated</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function Save(id_user) {                            
+                            var api = new XMLHttpRequest();
+                            api.open("GET", "/AdminUsers/UpdateUserRol?id_user=" + id_user + "&rol_id=" + document.querySelector("#DropRolName" + id_user).value);
+                            api.send();
+
+                            api.onreadystatechange = function() {
+                                if (this.status == 200 && this.readyState == 4) {
+                                    $('#myModal').modal('show')
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
 
