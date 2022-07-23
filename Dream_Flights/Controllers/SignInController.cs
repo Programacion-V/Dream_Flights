@@ -21,21 +21,36 @@ namespace Dream_Flights.Controllers
             return View();
         }
 
-        public CreateUserModel CreateUser(string first_name, string last_name, string pass1, string email)
+        public ActionResult CreateUser(string first_name, string last_name, string pass1, string email)
         {
-            List<SqlParameter> param = new List<SqlParameter>();
+            try {
+                List<SqlParameter> param1 = new List<SqlParameter>();
+                param1.Add(new SqlParameter("@email", email));
+                DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_email", param1);
 
-            param.Add(new SqlParameter("@per_first_name", first_name));
-            param.Add(new SqlParameter("@per_last_name", last_name));
-            param.Add(new SqlParameter("@per_email", email));
-            param.Add(new SqlParameter("@per_img", "default.jpg"));
-            param.Add(new SqlParameter("@user_password", pass1));
-            param.Add(new SqlParameter("@id_rol", 5));
+                if (ds.Rows.Count >= 1)
+                {
+                    return StatusCode(409);
+                }
+                else
+                {
+                    List<SqlParameter> param2 = new List<SqlParameter>();
 
+                    param2.Add(new SqlParameter("@per_first_name", first_name));
+                    param2.Add(new SqlParameter("@per_last_name", last_name));
+                    param2.Add(new SqlParameter("@per_email", email));
+                    param2.Add(new SqlParameter("@per_img", "default.jpg"));
+                    param2.Add(new SqlParameter("@user_password", pass1));
+                    param2.Add(new SqlParameter("@id_rol", 5));
 
-            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_user", param);
-
-            return null;
+                    DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_user", param2);
+                    return Ok();
+                }
+            }
+            catch(Exception ex) {
+                throw ex; 
+            }
+        
         }
 
         // GET: SignInController/Details/5
