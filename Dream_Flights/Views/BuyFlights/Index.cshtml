@@ -6,15 +6,22 @@
 
 <script>
 	debugger;
+   
+	var fly_number;
+    var airline;
+	var destination;
+	var date;
+	var time;
+	var price;
 	function show(number) {
 			   var rowId = number;
 			   var data = document.getElementById(rowId).querySelectorAll(".row-data");
-			   var fly_number = data[0].innerHTML;
-			   var airline = data[1].innerHTML;
-			   var destination = data[2].innerHTML;
-			   var date = data[3].innerHTML;
-			   var time = data[4].innerHTML;
-			   var price = data[5].innerHTML;
+			   fly_number = data[0].innerHTML;
+			   airline = data[1].innerHTML;
+			   destination = data[2].innerHTML;
+			   date = data[3].innerHTML;
+			   time = data[4].innerHTML;
+			   price = data[5].innerHTML;
 
 				alert("fly_number: " + fly_number + "\nairline: " + airline + "\ndestination: " + destination + "\ndate: " + date + "\ntime: " + time + "\nprice: " + price);
 			}
