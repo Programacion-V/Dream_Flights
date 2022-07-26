@@ -15,24 +15,27 @@ namespace Dream_Flights.Controllers
             ViewBag.buyflightsList = LoadBuyFlights();
             return View();
         }
+ 
 
-        private List<Flight> LoadBuyFlights()
+        private List<BuyFlight> LoadBuyFlights()
         {
             DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_buy_flights", null);
-            List<Flight> buyflightsList = new List<Flight>();
+            List<BuyFlight> buyflightsList = new List<BuyFlight>();
+            Random randomID = new Random(Guid.NewGuid().GetHashCode());
 
             foreach (DataRow row in ds.Rows)
             {
-                buyflightsList.Add(new Flight()
+                buyflightsList.Add(new BuyFlight()
                 {
                     fli_number = Convert.ToInt16(row["fli_number"]),
                     air_name = row["air_name"].ToString(),
-                    place = row["dep_destination"].ToString(),
+                    destination = row["dep_destination"].ToString(),
                     date = row["dep_date"].ToString(),
                     time = row["dep_time"].ToString(),
                     door = row["dep_door"].ToString(),
-                    description = row["sta_description"].ToString()
-                });
+                    description = row["sta_description"].ToString(),
+                    price = randomID.Next(10, 1000)
+            });
             }
 
             return buyflightsList;
