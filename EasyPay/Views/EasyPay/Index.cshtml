@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <h1 class="display-4">EasyPay</h1>
+    <form asp-controller="EasyPay" asp-action="ExecutePay"> 
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Amount" name="Amount" value="@ViewBag.Amount" readonly>
+            <label for="floatingInput">Amount</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="CardName">
+            <label for="floatingInput">Card name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="CardNumber">
+            <label for="floatingInput">Card number</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="Month">
+            <label for="floatingInput">Month</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="Year">
+            <label for="floatingInput">Year</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" name="CVV">
+            <label for="floatingInput">CVV</label>
+        </div>
+        <div class="form-floating">            
+            <button type="submit" class="btn btn-primary" style="float:left"><b>Pay!</b></button>
+        </div>
+    </form>
+</div>

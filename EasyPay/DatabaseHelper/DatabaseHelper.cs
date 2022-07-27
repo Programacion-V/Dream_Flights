@@ -5,12 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dream_Flights.DatabaseHelper
+namespace EasyPay.DatabaseHelper
 {
     public class DatabaseHelper
     {
         const string servidor = @"DESKTOP-D0RJ0FV";
-        const string baseDatos = "programacion_5";
+        const string baseDatos = "EasyPay";
         const string strConexion = "Data Source=" + servidor + ";Initial Catalog=" + baseDatos + ";Integrated Security=True";
 
         public static DataTable ExecuteStoreProcedure(string procedure, List<SqlParameter> param)
@@ -41,9 +41,9 @@ namespace Dream_Flights.DatabaseHelper
                     return dt;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -70,9 +70,9 @@ namespace Dream_Flights.DatabaseHelper
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
     }

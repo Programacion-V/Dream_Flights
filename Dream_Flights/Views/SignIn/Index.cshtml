@@ -51,29 +51,30 @@
 <script  type="text/javascript">
 
     function SaveUser(first_name,last_name,email,pass1,pass2) {    
-        debugger;
         if(first_name != "" && last_name != "" && email != "" && pass1 != "" && pass2 != ""){
             if(pass1 == pass2){
                 var api = new XMLHttpRequest();
                 api.open("GET", "/SignIn/CreateUser?first_name=" + first_name + "&last_name=" + last_name + "&pass1=" + pass1 + "&email=" + email);
                 api.send();
                 api.onreadystatechange = function() {
-                    debugger;
                     if (this.status == 200 && this.readyState == 4) {
                         $.notify("Account Created", "success");
                         limpiarcampos();
                     }else{
                         if (this.status == 409){
                             $.notify("Email Already In Use", "error");
+                            api.abort();
                         }
                     }
                 }
             }else{
                  $.notify("Passwords do not match", "error");
+                 api.abort();
             }
           
         }else{
             $.notify("complete all fields", "error");
+            api.abort();
         }
        
      }
