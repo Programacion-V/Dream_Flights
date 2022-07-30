@@ -5,7 +5,6 @@
 @*@Html.Partial("userAccess")*@
 
 <script>
-    debugger;
 
     var fly_number;
     var airline;
@@ -14,26 +13,36 @@
     var time;
     var price;
 
-
     function show(number) {
-
         var rowId = number;
         var data = document.getElementById(rowId).querySelectorAll(".row-data");
-
-        window.open("https://localhost:7251/?amount="+data[5].innerHTML, "customWindow", "width=500, height=600,  left=960");
-
-
-
-        /*        
+        $('#lblTotal').text(0);
+        $('#txtQuantity').val(1);
         fly_number = data[0].innerHTML;
         airline = data[1].innerHTML;
         destination = data[2].innerHTML;
         date = data[3].innerHTML;
         time = data[4].innerHTML;
         price = data[5].innerHTML;
+        $('#staticBackdrop').offcanvas('show');
+        //alert("fly_number: " + fly_number + "\nairline: " + airline + "\ndestination: " + destination + "\ndate: " + date + "\ntime: " + time + "\nprice: " + price);
+        $('#lblflyNumber').text(fly_number);
+        $('#lblairline').text(airline);
+        $('#lbldestination').text(destination);
+        $('#lbldate').text(date);
+        $('#lbltime').text(time);
+        $('#lblprice').text(price);
+        $('#lblTotal').text(price);
 
-         alert("fly_number: " + fly_number + "\nairline: " + airline + "\ndestination: " + destination + "\ndate: " + date + "\ntime: " + time + "\nprice: " + price);*/
+        $(document).on('keyup mouseup', '#txtQuantity', function() {  
+           var quan = $('#txtQuantity').val();
+           var t = quan * price;
+           $('#lblTotal').text(t);
+        });
+        //window.open("https://localhost:7251/?amount="+data[5].innerHTML, "customWindow", "width=500, height=600,  left=960");     
     }
+
+    
 
 
 
@@ -88,11 +97,45 @@
 <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="staticBackdropLabel">Buy Flights</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <div>
-            I will not close if you click outside of me.
+            <div class="mb-3">
+              <label  class="form-label">Flight Number: </label>
+              <b><label id="lblflyNumber"  class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Airline: </label>
+              <b><label id="lblairline" class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Destination: </label>
+              <b><label id="lbldestination" class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Date: </label>
+              <b><label id="lbldate" class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Time :</label>
+              <b><label id="lbltime" class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Price $ :</label>
+              <b><label id="lblprice" class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Quantity: </label>
+              <input type="number" id="txtQuantity" name="txtQuantity" min="1" max="100" value="1">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Total $: </label>
+              <b><label id="lblTotal" class="form-label"></label></b>
+            </div>
+            <div class="mb-3">
+            <button type="button" id="btnbuy" class="btn btn-success" style="float:right">Buy</button>
+            <button type="button" id="btncancel" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancel</button>
+            </div>
         </div>
     </div>
 </div>
