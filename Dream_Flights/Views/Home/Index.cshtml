@@ -3,38 +3,40 @@
 @Html.Partial("userAccess")
 
 
-<body background="Images/Fondo login.jpeg">
+<body background="Images\wallpaper_1.jpg" style="background-size: cover;">
+
+
+
 
     <div class="text-center">
-        <div class="card border-0" style="width:60%; height:70%; margin:5% 10% 0% 20%;">
+        <div class="card border-0" style="width:47%; height:70%; margin:5% 10% 0% 28%;">
                 <ul class="nav nav-tabs bg-dark border-0" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active text-dark bg-warning border-dark" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><b>Profile</b></button>
+                    <li class="nav-item" style="" role="presentation">
+                        <button class="nav-link active text-light bg-dark border-dark" style="" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><b>Profile</b></button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-dark bg-warning border-dark" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><b>Contact</b></button>
+                        <button class="nav-link text-light bg-dark border-dark" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><b>Contact</b></button>
                     </li>
                 </ul>
             <div class="tab-content tex bg-dark" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div class="container py-5 h-100">
-                        <div class="row d-flex justify-content-center align-items-center h-100">
-                            <div class="col col-md-9 col-lg-7 col-xl-5">
-                                <div class="card bg-dark">
-                                    <div class="card-body p-4 bg-warning text-dark border-0" style="border-radius:15px 15px; margin-left:-160px; width:600px; height:292px">
-                                        <div class="d-flex text-black">
+                    <div class="container">
+                            <div class="bg-dark border-0">
+                                 <div class="card mb-3 bg-dark border-0 justify-content-center align-items-center h-100">
+                                     <div class="card-body bg-warning text-dark" style="border-radius:15px 15px; width:75%; height: 50%; !important">
+                                         <div class="d-flex text-black">
                                             <div class="flex-shrink-0">
-                                                <img src=@ViewBag.User.per_img
-                                                     class="img-fluid border-0" style="width: 180px; border-radius: 10px;">
+                                                 <img src=@ViewBag.User.per_img 
+                                                     class="img-fluid border-0" style="width: 180px; height: 200px; border-radius: 10px;">
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h5 class="mb-1"><b>@ViewBag.User.per_first_name @ViewBag.User.per_last_name</b></h5>
                                                 <p class="mb-2 pb-1" style="color: #2b2a2a;"><b>@ViewBag.User.rol_name</b></p>
                                                 <p class="mb-2 pb-1" style="color: #2b2a2a;">@ViewBag.User.per_email</p>
                                                 <form asp-action="UpdatePhoto" asp-controller="Home" method="post" enctype="multipart/form-data">
-                                                    <div class="d-flex pt-1">
+                                                    <div class="d-flex pt-1" style="margin-top:70px">
                                                         <div class="file-upload-wrapper">
-                                                            <input type="file" name="photo" class="form-control" />
+                                                            <input type="file" name="photo" class="form-control me-1 flex-grow-1" />
                                                         </div>
                                                     </div>
                                                     <div class="d-flex pt-1">
@@ -46,13 +48,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade bg-dark border-0" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <div class="col-lg-8 bg-dark border-0">
-                        <div class="card mb-4 bg-dark border-0">
-                            <div class="card-body bg-warning text-dark" style="border-radius:15px 15px; margin-top:10px; margin-left:50px; width:600px">
+                    <div class="bg-dark border-0 d-flex justify-content-center align-items-center h-100">
+                        <div class="card mb-3 bg-dark border-0" style="width:75%; height: 50%; !important" >
+                            <div class="card-body bg-warning text-dark" style="border-radius:15px 15px;">
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <b><p class="mb-0">Full Name</p></b>

@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="DatabaseHelper\Scripts\" />
+    <Folder Include="wwwroot\Images\Profiles\" />
   </ItemGroup>
 
 </Project>

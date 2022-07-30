@@ -4,39 +4,51 @@
 
 @Html.Partial("userAccess")
 
-<div class="text-center" style="width: 100%; height: 136%; overflow-y: scroll;">
-    <div class="card">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="NewFlightArrival-tab" data-bs-toggle="tab" data-bs-target="#NewFlightArrival" type="button" role="tab" aria-controls="home" aria-selected="true">Users</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="NewFlightArrival" role="tabpanel" aria-labelledby="NewFlightArrival-tab">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 style="text-align:center">User Management</h4>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-responsive table-hover">
-                            <tr>
-                                <th>Id </th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Rol</th>
-                            </tr>
+<style>
+.table-fixed tbody{
+    height:500px;
+    overflow-y: auto;
+    width:100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed td,
+.table-fixed th{
+    display:block;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr > th{
+    float:left;
+    border-bottom-width:0;
+}
+</style>
+<body background="Images\wallpaper_1.jpg" style="background-size: cover;">
+
+                <div class="container d-flex justify-content-center align-items-center" style="padding-top:100px;" >
+                        <table class="table table-hover table-fixed table-dark text-light" style="width:1000px; height:500px">
+                            <thead class="bg-dark text-light">
+                                <tr style="width:950px">
+                                     <th style="width:50px" scope="col">Id</th>
+                                     <th style="width:215px" scope="col">First Name</th>
+                                     <th style="width:215px" scope="col">Last Name</th>
+                                     <th style="width:270px" scope="col">Email</th>
+                                     <th style="width:200px" scope="col">Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             @foreach (var item in ViewBag.Users)
                             {
-                                <tr onchange="Save(@item.id_user)">
-                                    <td>@item.id_user</td>
-                                    <td>@item.per_first_name</td>
-                                    <td>@item.per_last_name</td>
-                                    <td>@item.per_email</td>
-                                    <td>@Html.DropDownList("DropRolName"+@item.id_user, (IEnumerable<SelectListItem>) ViewBag.Rols, item.rol_name, new { @class = "form-control" })</td>
+                                <tr style="width:950px" onchange="Save(@item.id_user)">
+                                    <td style="width:50px">@item.id_user</td>
+                                    <td style="width:215px">@item.per_first_name</td>
+                                    <td style="width:215px">@item.per_last_name</td>
+                                    <td style="width:270px">@item.per_email</td>
+                                    <td style="width:200px">@Html.DropDownList("DropRolName"+@item.id_user, (IEnumerable<SelectListItem>) ViewBag.Rols, item.rol_name, new { @class = "form-control" })</td>
                                 </tr>
                             }
+                            </tbody>
                         </table>
+
                         <div id="myModal" class="modal" tabindex="-1" role="dialog">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -55,6 +67,7 @@
                             </div>
                         </div>
                     </div>
+</body>
                     <script>
                         function Save(id_user) {                            
                             var api = new XMLHttpRequest();
@@ -68,12 +81,3 @@
                             }
                         }
                     </script>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
