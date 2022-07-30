@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -39,6 +40,46 @@ namespace Dream_Flights.Controllers
                     Message = "You must LogIn first",
                     BackUrl = "Login",
                     Text = "Go back to LogIn"
+                };
+
+                return View("Error");
+            }
+        }
+
+        public ActionResult UpdatePhoto(IFormFile photo)
+        {
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user")) && photo != null)
+            {
+                ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
+
+                string fileName = ViewBag.User.id_person + new FileInfo(photo.FileName).Extension;
+                string filePath = Path.Combine("Images/Profiles/", fileName);
+                string localFileName = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Images/Profiles"), fileName);
+
+                using (var stream = new FileStream(localFileName, FileMode.Create))
+                {
+                    photo.CopyTo(stream);
+                }
+
+                List<SqlParameter> param = new List<SqlParameter>()
+                {
+                    new SqlParameter("@id_person", ViewBag.User.id_person),
+                    new SqlParameter("@per_img", filePath)
+                };
+
+                DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_update_photo", param);
+
+                ViewBag.User.per_img = filePath;
+
+                return View("Index");
+            }
+            else
+            {
+                ViewBag.Error = new Models.Error()
+                {
+                    Message = "Unhandled error trying to upload photo",
+                    BackUrl = "Home",
+                    Text = "Go back to Home"
                 };
 
                 return View("Error");

@@ -1,6 +1,7 @@
 ﻿@{ ViewData["Title"] = "Home Page"; }
 
-<body background="Images\Fondo login.jpeg">
+<body background="Images\wallpaper_1.jpg" style="background-size: cover;">
+
 <div class="container" style="width:40%;margin-top:5%">
     <div class="card">
         <div class="card-header text-center text-dark bg-warning">
@@ -8,12 +9,12 @@
         </div>
         <div class="card-body text-light bg-dark">
             <form asp-controller="Login" asp-action="LoginUser" method="post">
-                <div class="form-floating mb-3">
-                    <input type="email" required class="form-control" name="email" placeholder="name@example.com" value="stev.199279@gmail.com">
+                <div class="form">
+                    <input type="email" required class="form-control" name="email" placeholder="name@example.com" value="chris@gmail.com">
                     <label for="floatingInput">Email address</label>
                 </div>
-                <div class="form-floating">
-                    <input type="password" required class="form-control" name="password" placeholder="Password" value="1234">
+                <div class="form">
+                    <input type="password" required class="form-control" name="password" placeholder="Password" value="123">
                     <label for="floatingPassword">Password</label>
                 </div>
                 <hr />

@@ -4,51 +4,74 @@
 
 @Html.Partial("userAccess") 
 
-<div class="text-center">
-    <div class="card">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+<body background="Images\wallpaper_1.jpg" style="background-size: cover;">
+
+<style>
+.table-fixed tbody{
+    height:500px;
+    overflow-y: auto;
+    width:100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed td,
+.table-fixed th{
+    display:block;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr > th{
+    float:left;
+    border-bottom-width:0;
+
+}
+
+</style>
+
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="card border-0" style="width:1010px; height:540px;">
+        <div class="card bg-dark"></div>
+        <ul class="nav nav-tabs bg-dark text-light" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="NewFlightArrival-tab" data-bs-toggle="tab" data-bs-target="#NewFlightArrival" type="button" role="tab" aria-controls="home" aria-selected="true">New Flight Arrival</button>
+                <button class="nav-link active bg-dark text-light border-0" style="width:251px" id="NewFlightArrival-tab" data-bs-toggle="tab" data-bs-target="#NewFlightArrival" type="button" role="tab" aria-controls="home" aria-selected="true">New Flight Arrival</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="NewFlightDeparture-tab" data-bs-toggle="tab" data-bs-target="#NewFlightDeparture" type="button" role="tab" aria-controls="sales" aria-selected="false">New Flight Departure</button>
+                <button class="nav-link bg-dark text-light border-0" style="width:251px" id="NewFlightDeparture-tab" data-bs-toggle="tab" data-bs-target="#NewFlightDeparture" type="button" role="tab" aria-controls="sales" aria-selected="false">New Flight Departure</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="FlightsArrivals-tab" data-bs-toggle="tab" data-bs-target="#FlightsArrivals" type="button" role="tab" aria-controls="3" aria-selected="false">Flights Arrivals</button>
+                <button class="nav-link bg-dark text-light border-0" style="width:251px" id="FlightsArrivals-tab" data-bs-toggle="tab" data-bs-target="#FlightsArrivals" type="button" role="tab" aria-controls="3" aria-selected="false">Flights Arrivals</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="FlightsDepartures-tab" data-bs-toggle="tab" data-bs-target="#FlightsDepartures" type="button" role="tab" aria-controls="4" aria-selected="false">Flights Departures</button>
+                <button class="nav-link bg-dark text-light border-0" style="width:251px" id="FlightsDepartures-tab" data-bs-toggle="tab" data-bs-target="#FlightsDepartures" type="button" role="tab" aria-controls="4" aria-selected="false">Flights Departures</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="NewFlightArrival" role="tabpanel" aria-labelledby="NewFlightArrival-tab">
-                <div class="card" style="margin-top:5px">
-                    <div class="card-header">
-                        <h4 style="text-align:center">New Flight Arrival</h4>
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 style="text-align:center"><b>New Flight Arrival</b></h4>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
+                    <div class="card-body" style="width:1010px">
+                        <div class="row justify-content-center">
                             <div class="col-6">
                                 <form asp-controller="Flights" asp-action="SaveFlightArrival" method="post">
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="text" required class="form-control" name="origen" placeholder="Origen">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="date" id="origen_date" required class="form-control" name="origen_date" placeholder="Date">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="time" id="origen_time" required class="form-control" name="origen_time" placeholder="Time">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="text" required class="form-control" name="origen_door" placeholder="Door">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         @Html.DropDownList("statusA", (IEnumerable<SelectListItem>)ViewBag.StatusASelectListItem, "Select Arrival Status", new { @class ="form-control" })
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         @Html.DropDownList("id_airline", (IEnumerable<SelectListItem>)ViewBag.AirlineSelectListItem, "Select Airline", new { @class ="form-control" })
                                     </div>
-                                    <hr />
                                     <button type="submit" class="btn btn-success" style="float:right">Save</button>
                                 </form>
                                 <form asp-controller="" asp-action="" method="post">
@@ -60,30 +83,30 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="NewFlightDeparture" role="tabpanel" aria-labelledby="NewFlightDeparture-tab">
-                <div class="card" style="margin-top:5px">
-                    <div class="card-header">
-                        <h4 style="text-align:center">New Flight Departure</h4>
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 style="text-align:center"><b>New Flight Departure</b></h4>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
+                    <div class="card-body align-content-center" style="width:1010px">
+                        <div class="row justify-content-center">
                             <div class="col-6">
                                 <form asp-controller="Flights" asp-action="SaveFlightDeparture" method="post">
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="text" required class="form-control" name="destination" placeholder="Destination">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="date" id="departure_date" required class="form-control" name="departure_date" placeholder="Date">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="time" required class="form-control" name="departure_time" placeholder="Time">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         <input type="text" required class="form-control" name="departure_door" placeholder="Door">
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         @Html.DropDownList("statusD", (IEnumerable<SelectListItem>)ViewBag.StatusDSelectListItem, "Select Departure Status", new { @class ="form-control" })
                                     </div>
-                                    <div class="form-floating mb-3">
+                                    <div class="form mb-3">
                                         @Html.DropDownList("id_airline", (IEnumerable<SelectListItem>)ViewBag.AirlineSelectListItem, "Select Airline", new { @class ="form-control" })
                                     </div>
                                     <button type="submit" class="btn btn-success" style="float:right">Save</button>
@@ -98,68 +121,76 @@
             </div>
             <div class="tab-pane fade" id="FlightsArrivals" role="tabpanel" aria-labelledby="FlightsArrivals-tab">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 style="text-align:center">Flights Arrivals</h4>
+                    <div class="card-header bg-warning text-dark">
+                        <h4 style="text-align:center"><b>Flights Arrivals</b></h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-responsive table-hover">
-                            <tr>
-                                <th>Flight Number </th>
-                                <th>Airline </th>
-                                <th>Origen </th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Door</th>
-                                <th>Status</th>
-                            </tr>
+                        <table class="table table-responsive table-hover table-fixed text-center" style="width:980px; height:380px"> 
+                            <thead class="bg-dark text-light">
+                                <tr style="width:950px">
+                                    <th style="width:197px" scope="col">Flight Number </th>
+                                    <th style="width:110px" scope="col">Airline </th>
+                                    <th style="width:110px" scope="col">Origen </th>
+                                    <th style="width:197px" scope="col">Date</th>
+                                    <th style="width:110px" scope="col">Time</th>
+                                    <th style="width:100px" scope="col">Door</th>
+                                    <th style="width:125px" scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             @foreach (var item in ViewBag.flightsListArrivals)
                             {
-                                <tr>
-                                    <td>@item.fli_number</td>
-                                    <td>@item.air_name</td>
-                                    <td>@item.place</td>
-                                    <td>@item.date</td>
-                                    <td>@item.time</td>
-                                    <td>@item.door</td>
-                                    <td>@item.description</td>
+                                <tr style="width:950px">
+                                    <td style="width:197px">@item.fli_number</td>
+                                    <td style="width:110px">@item.air_name</td>
+                                    <td style="width:110px">@item.place</td>
+                                    <td style="width:197px">@item.date</td>
+                                    <td style="width:110px">@item.time</td>
+                                    <td style="width:100px">@item.door</td>
+                                    <td style="width:125px">@item.description</td>
 
                                 </tr>
                             }
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="FlightsDepartures" role="tabpanel" aria-labelledby="FlightsDepartures-tab">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 style="text-align:center">Flights Departures</h4>
+                    <div class="card-header bg-warning text-dark" style="">
+                        <h4 style="text-align:center"><b>Flights Departures</b></h4>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered table-responsive table-hover">
-                            <tr>
-                                <th>Flight Number </th>
-                                <th>Airline </th>
-                                <th>Destination </th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Door</th>
-                                <th>Status</th>
-                            </tr>
+                        <table class="table table-responsive table-hover table-fixed text-center" style="width:980px; height:380px">
+                            <thead class="bg-dark text-light">
+                                <tr style="width:950px">
+                                    <th style="width:187px" scope="col">Flight Number </th>
+                                    <th style="width:110px" scope="col">Airline </th>
+                                    <th style="width:120px" scope="col">Destination</th>
+                                    <th style="width:197px" scope="col">Date</th>
+                                    <th style="width:110px" scope="col">Time</th>
+                                    <th style="width:100px" scope="col">Door</th>
+                                    <th style="width:125px" scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             @foreach (var item in ViewBag.flightsListDepartures)
                             {
-                                <tr>
-                                    <td>@item.fli_number</td>
-                                    <td>@item.air_name</td>
-                                    <td>@item.place</td>
-                                    <td>@item.date</td>
-                                    <td>@item.time</td>
-                                    <td>@item.door</td>
-                                    <td>@item.description</td>
+                               <tr style="width:950px">
+                                    <td style="width:187px">@item.fli_number</td>
+                                    <td style="width:110px">@item.air_name</td>
+                                    <td style="width:120px">@item.place</td>
+                                    <td style="width:197px">@item.date</td>
+                                    <td style="width:110px">@item.time</td>
+                                    <td style="width:100px">@item.door</td>
+                                    <td style="width:125px">@item.description</td>
+
                                 </tr>
                             }
+                            </tbody>
                         </table>
                     </div>
-                    <div class="card-footer"></div>
                     <div>
                     </div>
                 </div>
@@ -167,6 +198,4 @@
         </div>
     </div>
 </div>
-
-
-
+</body>
