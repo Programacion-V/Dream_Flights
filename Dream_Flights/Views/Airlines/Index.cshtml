@@ -4,21 +4,42 @@
 
 @Html.Partial("userAccess")
 
+<style>
+.table-fixed tbody{
+    height:500px;
+    overflow-y: auto;
+    width:100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed td,
+.table-fixed th{
+    display:block;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr > th{
+    float:left;
+    border-bottom-width:0;
+
+}
+
+</style>
+
 <body background="Images\wallpaper_1.jpg" style="background-size: cover;">
 
-<div class="text-center">
-    <div class="card">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="card border-0 table-fixed table-responsive text-center bg-dark" style="width:2500px; height:730px; margin-top:13%">
+        <ul class="nav nav-tabs  bg-dark text-light" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="airlines-tab" data-bs-toggle="tab" data-bs-target="#airlines" type="button" role="tab" aria-controls="home" aria-selected="true">Airlines</button>
+                <button class="nav-link active bg-dark text-light" id="airlines-tab" data-bs-toggle="tab" data-bs-target="#airlines" type="button" role="tab" aria-controls="home" aria-selected="true">Airlines</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="new_airlines-tab" data-bs-toggle="tab" data-bs-target="#new_airlines" type="button" role="tab" aria-controls="sales" aria-selected="false">New Airlines</button>
+                <button class="nav-link  bg-dark text-light" id="new_airlines-tab" data-bs-toggle="tab" data-bs-target="#new_airlines" type="button" role="tab" aria-controls="sales" aria-selected="false">New Airlines</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="airlines" role="tabpanel" aria-labelledby="airlines-tab">
-                <div class="container-fluid" style="width:100%;">
+                <div class="container-fluid">
                     <div class="row">
                         @foreach (var item in @ViewBag.Arlines)
                         {
@@ -35,15 +56,13 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="new_airlines" role="tabpanel" aria-labelledby="new_airlines-tab">
-                <div class="container" style="width:100%;margin-top:2%">
+              <div class="container d-flex justify-content-center align-items-center h-100" style="width:70%; margin-top:1%">
                     <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <div class="card mb-4">
-                                    <div class="card-header py-3">
-                                        <h5 class="mb-0">New Airline</h5>
+                             <div class="card mb-4">
+                                <div class="card-header py-3 bg-warning text-dark">
+                                   <h5 class="mb-0"><b>New Airline</b></h5>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body bg-dark text-light">
                                         <div class="form-outline mb-4">
                                             <input type="text" id="name" name="name" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Airline Name</label>
@@ -58,23 +77,20 @@
                                         </div>
                                         <div class="form-outline mb-4">
                                             <div class="file-upload-wrapper">
-                                                <input type="file" name="photo" class="form-control" />
+                                                <input type="file" id="photo" name="photo" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class=card-footer>
-                                        <button type="submit" class="btn btn-outline-success" style="float:right">Save</button>
+                                    <div class="card-footer bg-warning">
+                                        <button type="submit" class="btn btn-success" style="float:right"><b>Save</b></button>
                     </form>
                     <form asp-controller="Airlines" asp-action="Index" method="post">
-                        <button type="submit" class="btn btn-outline-danger" style="float:left">Cancel</button>
+                        <button type="submit" class="btn btn-danger" style="float:left"><b>Cancel</b></button>
                     </form>
 
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    </div>
-</div>
 </body>

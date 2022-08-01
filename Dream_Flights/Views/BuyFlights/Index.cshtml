@@ -4,6 +4,24 @@
 
 @*@Html.Partial("userAccess")*@
 
+<style>
+.table-fixed tbody{
+    height:500px;
+    overflow-y: auto;
+    width:100%;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed td,
+.table-fixed th{
+    display:block;
+}
+.table-fixed tbody td,
+.table-fixed thead > tr > th{
+    float:left;
+    border-bottom-width:0;
+}
+</style>
 
 <script>
 
@@ -51,35 +69,29 @@
 
 <body background="Images\wallpaper_1.jpg" style="background-size: cover;">
 
-<div class="text-center">
-    <div class="card">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="BuyFlights-tab" data-bs-toggle="tab" data-bs-target="#BuyFlights" type="button" role="tab" aria-controls="4" aria-selected="false"> Buy Flights</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="NewFlightArrival" role="tabpanel" aria-labelledby="NewFlightArrival-tab">
-                <div class="container-fluid">
-                    <table class="table table-bordered table-responsive table-hover" id="flytable">
+ <div class="container d-flex justify-content-center align-items-center text-center" style="margin-top:5%;" >>
+                    <table class="table table-hover table-bordered table-responsive table-fixed table-light text-dark" id="flytable" style="width:1000px; height:500px">
+                        <thead style="width:960px">
                         <tr>
-                            <th>Flight Number </th>
-                            <th>Airline </th>
-                            <th>Destination </th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>$</th>
-                            <th>Buy</th>
+                            <th style="width:150px" scope="col">Flight Number </th>
+                            <th style="width:150px" scope="col">Airline </th>
+                            <th style="width:150px" scope="col">Destination </th>
+                            <th style="width:150px" scope="col">Date</th>
+                            <th style="width:150px" scope="col">Time</th>
+                            <th style="width:150px" scope="col">$</th>
+                            <th style="width:60px" scope="col">Buy</th>
                         </tr>
-                        @foreach (var item in ViewBag.buyflightsList)
+                        </thead>
+                        <tbody class="bg-light text-dark">
+                            @foreach (var item in ViewBag.buyflightsList)
                         {
                             <tr id="@item.fli_number">
-                                <td class="row-data" id="tdfly_@item.fli_number">@item.fli_number</td>
-                                <td class="row-data" id="tdair_@item.fli_number">@item.air_name</td>
-                                <td class="row-data" id="tddestination_@item.fli_number">@item.destination</td>
-                                <td class="row-data" id="tddate_@item.fli_number">@item.date</td>
-                                <td class="row-data" id="tdtime_@item.fli_number"> @item.time</td>
-                                <td class="row-data" id="tdprice_@item.fli_number">@item.price</td>
+                                <td class="row-data" id="tdfly_@item.fli_number" style="width:150px">@item.fli_number</td>
+                                <td class="row-data" id="tdair_@item.fli_number" style="width:150px">@item.air_name</td>
+                                <td class="row-data" id="tddestination_@item.fli_number" style="width:150px">@item.destination</td>
+                                <td class="row-data" id="tddate_@item.fli_number" style="width:150px">@item.date</td>
+                                <td class="row-data" id="tdtime_@item.fli_number" style="width:150px">@item.time</td>
+                                <td class="row-data" id="tdprice_@item.fli_number" style="width:150px">@item.price</td>
                                 <td>
                                     <button id="btn_@item.fli_number" class="btn btn-success" type="button" onclick="show(@item.fli_number)">
                                         <!---data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop"-->
@@ -90,15 +102,11 @@
                                 </td>
                             </tr>
                         }
+                        </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-    <div class="offcanvas-header">
+    <div class="offcanvas-header bg-warning">
         <h5 class="offcanvas-title" id="staticBackdropLabel">Buy Flights</h5>
     </div>
     <div class="offcanvas-body">
@@ -142,6 +150,4 @@
         </div>
     </div>
 </div>
-
 </body>
-
