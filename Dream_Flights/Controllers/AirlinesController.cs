@@ -100,7 +100,7 @@ namespace Dream_Flights.Controllers
             }
             else
             {
-                filePath = Path.Combine("/Images/", "default.jpg");
+                filePath = Path.Combine("Images/", "default.gif");
             }
             List<SqlParameter> param = new List<SqlParameter>()
             {
