@@ -13,8 +13,10 @@
     var date;
     var time;
     var price;
+    var t;
 
     function show(number) {
+        
         var rowId = number;
         var data = document.getElementById(rowId).querySelectorAll(".row-data");
         $('#lblTotal').text(0);
@@ -37,10 +39,15 @@
 
         $(document).on('keyup mouseup', '#txtQuantity', function() {  
            var quan = $('#txtQuantity').val();
-           var t = quan * price;
+           t = quan * price;
            $('#lblTotal').text(t);
         });
-        //window.open("https://localhost:7251/?amount="+data[5].innerHTML, "customWindow", "width=500, height=600,  left=960");     
+    }
+
+    function EasyPay(){
+        debugger;
+        var amount = $('#lblTotal').text();
+        window.open("https://localhost:7251/?amount="+amount, "customWindow", "width=500, height=600,  left=550, top=100");     
     }
 
     
@@ -136,8 +143,8 @@
               <b><label id="lblTotal" class="form-label"></label></b>
             </div>
             <div class="mb-3">
-            <button type="button" id="btnbuy" class="btn btn-success" style="float:right">Buy</button>
-            <button type="button" id="btncancel" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancel</button>
+            <button type="button" id="btnEasyPay" class="btn btn-success" style="float:right" onclick="EasyPay()">Buy</button>
+            <button type="button" id="btnCancel" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancel</button>
             </div>
         </div>
     </div>
