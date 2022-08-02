@@ -1,6 +1,6 @@
 # Dream_Flights
 
-Update DB "programacion_5" to "programacion_5_v1.1" in order to get the last version.
+Update DB "programacion_5"
 Includes: -The sp_insert_countries 
           -Some image path updates
           -Some fixes
