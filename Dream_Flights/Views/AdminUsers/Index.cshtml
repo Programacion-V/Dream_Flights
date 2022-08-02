@@ -24,7 +24,7 @@
 </style>
 <body background="Images\wallpaper_1.jpg" style="background-size: cover;">
 
-                <div class="container d-flex justify-content-center align-items-center" style="padding-top:100px;" >
+                <div class="container d-flex justify-content-center align-items-center" style="margin-top:5%;" >
                         <table class="table table-hover table-fixed table-dark text-light" style="width:1000px; height:500px">
                             <thead class="bg-dark text-light">
                                 <tr style="width:950px">
@@ -68,16 +68,16 @@
                         </div>
                     </div>
 </body>
-                    <script>
-                        function Save(id_user) {                            
-                            var api = new XMLHttpRequest();
-                            api.open("GET", "/AdminUsers/UpdateUserRol?id_user=" + id_user + "&rol_id=" + document.querySelector("#DropRolName" + id_user).value);
-                            api.send();
+<script  type="text/javascript">
+          function Save(id_user) {                            
+              var api = new XMLHttpRequest();
+                  api.open("GET", "/AdminUsers/UpdateUserRol?id_user=" + id_user + "&rol_id=" + document.querySelector("#DropRolName" + id_user).value);
+                     api.send();
 
-                            api.onreadystatechange = function() {
-                                if (this.status == 200 && this.readyState == 4) {
-                                    $('#myModal').modal('show')
-                                }
-                            }
-                        }
-                    </script>
+                     api.onreadystatechange = function() {
+                        if (this.status == 200 && this.readyState == 4) {
+                            $.notify("Update User", "success");
+                    }
+              }
+          }
+ </script>

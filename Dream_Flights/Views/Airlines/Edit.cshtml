@@ -1,17 +1,16 @@
-﻿@using System.Collections
+﻿@*@using System.Collections
 
 
-
+<body background="Images\wallpaper_1.jpg" style="background-size: cover;">
 <div class="text-center">
-    <div class="container" style="width:100%;margin-top:2%">
+<div class="container d-flex justify-content-center align-items-center h-100" style="margin-top:5%">
         <form method="post" action="@Url.Action("Save", "Airlines")" enctype="multipart/form-data">
             <div class="row">
-                <div class="col-md-4 mb-4">
                     <div class="card mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 bg-warning text-dark">
                             <h5 class="mb-0">New Airline</h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-dark text-light">
                             <div class="form-outline mb-4">
                                 <input type="text" id="name" name="name" class="form-control" required />
                                 <label class="form-label" for="form6Example4">Airline Name</label>
@@ -30,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=card-footer>
+                        <div class="card-footer bg-warning text-dark">
                             <button type="submit" class="btn btn-outline-success" style="float:right">Save</button>
         </form>
         <form asp-controller="Airlines" asp-action="Index" method="post">
@@ -40,5 +39,4 @@
 
     </div>
 </div>
-</div>
-</div>
+</body>*@
