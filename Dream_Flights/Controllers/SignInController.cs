@@ -39,7 +39,7 @@ namespace Dream_Flights.Controllers
                     param2.Add(new SqlParameter("@per_first_name", first_name));
                     param2.Add(new SqlParameter("@per_last_name", last_name));
                     param2.Add(new SqlParameter("@per_email", email));
-                    param2.Add(new SqlParameter("@per_img", "default.jpg"));
+                    param2.Add(new SqlParameter("@per_img", "Images/Profiles/default.jpg"));
                     param2.Add(new SqlParameter("@user_password", pass1));
                     param2.Add(new SqlParameter("@id_rol", 5));
 
