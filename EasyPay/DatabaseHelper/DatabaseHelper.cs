@@ -9,7 +9,7 @@ namespace EasyPay.DatabaseHelper
 {
     public class DatabaseHelper
     {
-        const string servidor = @"DESKTOP-D0RJ0FV";
+        const string servidor = @"HEBI"; //HEBI //DESKTOP-D0RJ0FV
         const string baseDatos = "EasyPay";
         const string strConexion = "Data Source=" + servidor + ";Initial Catalog=" + baseDatos + ";Integrated Security=True";
 

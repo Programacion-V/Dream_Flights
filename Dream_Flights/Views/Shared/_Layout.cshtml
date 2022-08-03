@@ -13,43 +13,38 @@
         <body >
      <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-warning" style="height:72px;">
-            <div class="container-fluid">
-                    <p class="navbar-brand" asp-area="" asp-controller="Started" asp-action="Index" style="margin-left:-1470px" ><h3><b>Dream Flights</b></h3><img src="~/Iconos/globo.png" style="width:45px; height:45px;margin-left:-1550px" /></p>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                         aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            </div>
+            <a class="navbar-brand" style="margin-left:10px" asp-area="" asp-controller="Started" asp-action="Index">
+                <img src="~/Iconos/globo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <b>Dream Flights</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </nav>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark" style="height:40px">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark" style="height:auto">
                 <div class="container-fluid">
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                         <ul class="navbar-nav flex-grow-1 text-center">
                             <li class="nav-item">
                                 <a class="nav-link" style="color:white" asp-area="" asp-controller="Login" asp-action="Index"><b>Login</b></a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link"  style="color:white" asp-area="" asp-controller="Started" asp-action="Index"><b>Home</b></a>
-                            </li>
+                         
                             <li id="Flights" hidden="hidden" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="Flights" asp-action="Index"><b>Flights Management</b></a>
                             </li>
                             <li id="Airlines" hidden="hidden" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="Airlines" asp-action="Index"><b>Airlines Management</b></a>
                             </li>
-                             <li id="Countries" hidden="hidden" class="nav-item">
-                                <a class="nav-link"  style="color:white" asp-area="" asp-controller="Countries" asp-action="Index"><b>Countries Management</b></a>
-                            </li>
-                            <li id="AdminUsers" hidden="hidden" class="nav-item">
+                            <li id="AdminUsers"hidden="hidden" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="AdminUsers" asp-action="Index"><b>User Management</b></a>
                             </li>
                              <li id="BuyFlights"  hidden="hidden" class="nav-item">
                                 <a class="nav-link"style="color:white" asp-area="" asp-controller="BuyFlights" asp-action="Index"><b>Buy Flights</b></a>
                             </li>
-                            <li class="nav-item">
+                            <li id="profile" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="Home" asp-action="Index" style="float:left"><img src="~/Iconos/usuario1.png" style="width:30px; height:28px" /></a>
                             </li>
-                            <li class="Logout">
+                            <li id="logout"class="Logout">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout" style="float:left"><img src="~/Iconos/salida.png" style="width:30px; height:28px" /></a>
                             </li>
                         </ul>
