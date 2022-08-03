@@ -130,7 +130,7 @@ namespace Dream_Flights.Controllers
 
 
         // GET: CountriesController/Edit/5
-        public IActionResult Edit()
+        public ActionResult Edit(int id)
         {
             return View();
         }
