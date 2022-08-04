@@ -8,9 +8,10 @@ namespace EasyPay.Controllers
     public class EasyPayController : Controller
     {
         // GET: EasyPayController1
-        public ActionResult Index(int amount)
+        public ActionResult Index(int amount,int transactionNumber)
         {
             ViewBag.Amount = amount;
+            ViewBag.TransactionNumber = transactionNumber;
 
             return View();
         }
@@ -26,7 +27,8 @@ namespace EasyPay.Controllers
                                        string Month,
                                        string Year,
                                        string CVV,
-                                       string Amount)
+                                       string Amount,
+                                       string ez_transaction)
         {
             List<SqlParameter> param = new List<SqlParameter>()
             {
@@ -34,7 +36,8 @@ namespace EasyPay.Controllers
                 new SqlParameter("@month_exp", Month),
                 new SqlParameter("@year_exp", Year),
                 new SqlParameter("@cvv", CVV),
-                new SqlParameter("@amount", Amount)
+                new SqlParameter("@amount", Amount),
+                new SqlParameter("@transactionNumber", ez_transaction)
             };
 
             DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("ExecutePayment", param);
@@ -47,9 +50,21 @@ namespace EasyPay.Controllers
                 {
                     return RedirectToAction("Payment", "EasyPay", new { @id = "Payment Completed" });
                 }
+                if (response == "-1")
+                {
+                    return RedirectToAction("Payment", "EasyPay", new { @id = "Invalid card number" });
+                }
+                if (response == "-2")
+                {
+                    return RedirectToAction("Payment", "EasyPay", new { @id = "Invalid expiration date" });
+                }
+                if (response == "-3")
+                {
+                    return RedirectToAction("Payment", "EasyPay", new { @id = "Incorrect CVV" });
+                }
                 if (response == "-4")
                 {
-                    return RedirectToAction("Payment", "EasyPay", new { @id = "Insufficient available funds" });
+                    return RedirectToAction("Payment", "EasyPay", new { @id = "Insufficient available funds/Amount over credit limit" });
                 }
             }
 

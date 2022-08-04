@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.Json;
 
 namespace Dream_Flights.Controllers
 {
@@ -12,8 +13,25 @@ namespace Dream_Flights.Controllers
         // GET: BuyFlightsController
         public ActionResult Index()
         {
-            ViewBag.buyflightsList = LoadBuyFlights();
-            return View();
+
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user")))
+            {
+                ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
+                ViewBag.buyflightsList = LoadBuyFlights();
+                ViewBag.ez_transaction = Loadez_transaction();
+                return View();
+            }
+            else
+            {
+                ViewBag.Error = new Models.Error()
+                {
+                    Message = "You must Log In first",
+                    BackUrl = "Login",
+                    Text = "Go back to Log In"
+                };
+
+                return View("Error");
+            }
         }
  
 
@@ -39,6 +57,24 @@ namespace Dream_Flights.Controllers
             }
 
             return buyflightsList;
+        }
+
+        private ez_transaction Loadez_transaction()
+        {
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_ez_transaction", null);
+
+            if (ds.Rows.Count == 1)
+            {
+                ez_transaction ez_Transaction = new ez_transaction()
+                {
+                    ez_transaction_n = Convert.ToInt16(ds.Rows[0]["ez_n"]),
+            
+                   
+                };
+
+                return ez_Transaction;
+            }
+            return null;
         }
         // GET: BuyFlightsController/Details/5
         public ActionResult Details(int id)

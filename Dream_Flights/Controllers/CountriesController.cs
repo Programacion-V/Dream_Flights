@@ -110,7 +110,7 @@ namespace Dream_Flights.Controllers
             }
             List<SqlParameter> param = new List<SqlParameter>()
             {
-                new SqlParameter("@id_country", id_country),
+                //new SqlParameter("@id_country", id_country),
                 new SqlParameter("@cou_name", cou_name),
                 new SqlParameter("@cou_img", filePath)
             };

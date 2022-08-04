@@ -11,9 +11,9 @@ namespace Dream_Flights.DatabaseHelper
     {
 
         //Chris - CHRISTOPHER\SQLEXPRESS02
+        //steven HEBI
 
-
-        const string servidor = @"CHRISTOPHER\SQLEXPRESS02"; 
+        const string servidor = @"HEBI"; 
         const string baseDatos = "programacion_5";
         const string strConexion = "Data Source=" + servidor + ";Initial Catalog=" + baseDatos + ";Integrated Security=True";
 

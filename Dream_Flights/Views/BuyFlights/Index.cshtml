@@ -2,7 +2,56 @@
     ViewData["Title"] = "Home Page";
 }
 
-@*@Html.Partial("userAccess")*@
+<script>
+    var fly_number;
+    var airline;
+    var destination;
+    var date;
+    var time;
+    var price;
+    var t;
+    var transactionNumber;
+    debugger;
+
+    function show(number) {
+        debugger;
+        var rowId = number;
+        var data = document.getElementById(rowId).querySelectorAll(".row-data");
+        $('#lblTotal').text(0);
+        $('#txtQuantity').val(1);
+        fly_number = data[0].innerHTML;
+        airline = data[1].innerHTML;
+        destination = data[2].innerHTML;
+        date = data[3].innerHTML;
+        time = data[4].innerHTML;
+        price = data[5].innerHTML;
+        $('#staticBackdrop').offcanvas('show');
+        //alert("fly_number: " + fly_number + "\nairline: " + airline + "\ndestination: " + destination + "\ndate: " + date + "\ntime: " + time + "\nprice: " + price);
+        $('#lblflyNumber').text(fly_number);
+        $('#lblairline').text(airline);
+        $('#lbldestination').text(destination);
+        $('#lbldate').text(date);
+        $('#lbltime').text(time);
+        $('#lblprice').text(price);
+        $('#lblTotal').text(price);
+        transactionNumber = $('#ez_transaction').text();
+
+        $(document).on('keyup mouseup', '#txtQuantity', function() {  
+           var quan = $('#txtQuantity').val();
+           t = quan * price;
+           $('#lblTotal').text(t);
+        });
+    }
+
+    function EasyPay(){
+        debugger;
+        var amount = $('#lblTotal').text();
+        //var transactionNumber = $('#ez_transaction').text();
+        window.open("https://localhost:7251/?amount="+amount+"&transactionNumber="+ transactionNumber , "customWindow", "width=500, height=600,  left=550, top=100");     
+    }
+</script>
+
+@Html.Partial("userAccess");
 
 <style>
 .table-fixed tbody{
@@ -23,60 +72,13 @@
 }
 </style>
 
-<script>
 
-    var fly_number;
-    var airline;
-    var destination;
-    var date;
-    var time;
-    var price;
-    var t;
-
-    function show(number) {
-        
-        var rowId = number;
-        var data = document.getElementById(rowId).querySelectorAll(".row-data");
-        $('#lblTotal').text(0);
-        $('#txtQuantity').val(1);
-        fly_number = data[0].innerHTML;
-        airline = data[1].innerHTML;
-        destination = data[2].innerHTML;
-        date = data[3].innerHTML;
-        time = data[4].innerHTML;
-        price = data[5].innerHTML;
-        $('#staticBackdrop').offcanvas('show');
-        //alert("fly_number: " + fly_number + "\nairline: " + airline + "\ndestination: " + destination + "\ndate: " + date + "\ntime: " + time + "\nprice: " + price);
-        $('#lblflyNumber').text(fly_number);
-        $('#lblairline').text(airline);
-        $('#lbldestination').text(destination);
-        $('#lbldate').text(date);
-        $('#lbltime').text(time);
-        $('#lblprice').text(price);
-        $('#lblTotal').text(price);
-
-        $(document).on('keyup mouseup', '#txtQuantity', function() {  
-           var quan = $('#txtQuantity').val();
-           t = quan * price;
-           $('#lblTotal').text(t);
-        });
-    }
-
-    function EasyPay(){
-        debugger;
-        var amount = $('#lblTotal').text();
-        window.open("https://localhost:7251/?amount="+amount, "customWindow", "width=500, height=600,  left=550, top=100");     
-    }
-
-    
-
-
-
-</script>
 
 <body background="Images\wallpaper_1.jpg" style="background-size: cover;">
 
- <div class="container d-flex justify-content-center align-items-center text-center" style="margin-top:2%;" >>
+ <div class="container d-flex justify-content-center align-items-center text-center" style="margin-top:2%;" >
+    <label id="ez_transaction" hidden="hidden">@ViewBag.ez_transaction.ez_transaction_n</label>
+        
                     <table class="table table-hover table-bordered table-responsive table-fixed table-light text-dark" id="flytable" style="width:1000px; height:500px">
                         <thead style="width:960px">
                         <tr>
@@ -111,6 +113,7 @@
                         }
                         </tbody>
                     </table>
+                        
                 </div>
 <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header bg-warning">

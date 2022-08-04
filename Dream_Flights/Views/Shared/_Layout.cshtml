@@ -28,9 +28,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color:white" asp-area="" asp-controller="Login" asp-action="Index"><b>Login</b></a>
                             </li>
-                             <li class="nav-item">
+                             <!--<li class="nav-item">
                                 <a class="nav-link" style="color:white" asp-area="" asp-controller="Started" asp-action="Index"><b>Home</b></a>
-                            </li>
+                            </li>-->
                             <li id="Flights" hidden="hidden" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="Flights" asp-action="Index"><b>Flights Management</b></a>
                             </li>
@@ -46,10 +46,10 @@
                              <li id="Countries" hidden="hidden" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="Countries" asp-action="Index"><b>Countries Management</b></a>
                             </li>
-                            <li id="profile" class="nav-item">
+                            <li id="profile" hidden="hidden" class="nav-item">
                                 <a class="nav-link"  style="color:white" asp-area="" asp-controller="Home" asp-action="Index" style="float:left"><img src="~/Iconos/usuario1.png" style="width:30px; height:28px" /></a>
                             </li>
-                            <li id="logout"class="Logout">
+                            <li id="logout" hidden="hidden" class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Logout" style="float:left"><img src="~/Iconos/salida.png" style="width:30px; height:28px" /></a>
                             </li>
                         </ul>
