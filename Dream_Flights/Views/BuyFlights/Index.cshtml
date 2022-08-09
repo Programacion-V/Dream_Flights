@@ -9,9 +9,13 @@
     var date;
     var time;
     var price;
+    var quan;
+    var amount;
     var t;
     var transactionNumber;
+    var id_person;
     debugger;
+    let eazypay_w;
 
     function show(number) {
         debugger;
@@ -35,23 +39,44 @@
         $('#lblprice').text(price);
         $('#lblTotal').text(price);
         transactionNumber = $('#ez_transaction').text();
-
+        id_person = $('#lbl_id_person').text();
         $(document).on('keyup mouseup', '#txtQuantity', function() {  
-           var quan = $('#txtQuantity').val();
+           quan = $('#txtQuantity').val();
            t = quan * price;
            $('#lblTotal').text(t);
         });
     }
 
     function EasyPay(){
+        
         debugger;
-        var amount = $('#lblTotal').text();
+        amount = $('#lblTotal').text();
         //var transactionNumber = $('#ez_transaction').text();
-        window.open("https://localhost:7251/?amount="+amount+"&transactionNumber="+ transactionNumber , "customWindow", "width=500, height=600,  left=550, top=100");     
+        saveBuy(fly_number,amount,quan,price,transactionNumber,id_person);
+        eazypay_w = window.open("https://localhost:7251/?amount="+amount+"&transactionNumber="+ transactionNumber , "customWindow", "width=500, height=600,  left=550, top=100");     
+       
     }
+
+    function closeWin() {
+        eazypay_w.close();
+    }
+
+    function saveBuy(fly_number,amount,quan,price,transactionNumber,id_person){
+        var api = new XMLHttpRequest();
+        api.open("GET", "/BuyFlights/SaveBuy?fly_number=" + fly_number + "&amount=" + amount + "&quan=" + quan + "&price=" + price + "&transactionNumber=" + transactionNumber + "&id_person=" + id_person);
+
+        api.send();
+        api.onreadystatechange = function(){
+            if (this.status == 200 && this.readyState == 4){
+                $.notify("Update User", "success");
+            }
+        }
+    }
+
+
 </script>
 
-@Html.Partial("userAccess");
+@Html.Partial("userAccess")
 
 <style>
 .table-fixed tbody{
@@ -78,7 +103,7 @@
 
  <div class="container d-flex justify-content-center align-items-center text-center" style="margin-top:2%;" >
     <label id="ez_transaction" hidden="hidden">@ViewBag.ez_transaction.ez_transaction_n</label>
-        
+    <label id="lbl_id_person" hidden="hidden">@ViewBag.user.id_person</label>  
                     <table class="table table-hover table-bordered table-responsive table-fixed table-light text-dark" id="flytable" style="width:1000px; height:500px">
                         <thead style="width:960px">
                         <tr>
@@ -160,4 +185,5 @@
         </div>
     </div>
 </div>
+
 </body>

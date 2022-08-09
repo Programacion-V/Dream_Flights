@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text.Json;
 
 namespace Dream_Flights.Controllers
@@ -75,6 +76,25 @@ namespace Dream_Flights.Controllers
                 return ez_Transaction;
             }
             return null;
+        }
+
+        public ActionResult SaveBuy(int fly_number, int amount,int quan,int price,int transactionNumber,int id_person)
+        {
+            List<SqlParameter> param = new List<SqlParameter>()
+            {
+                new SqlParameter("@id_flight_departure", fly_number),
+                new SqlParameter("@amount", amount),
+                new SqlParameter("@quantity", quan),
+                new SqlParameter("@price", price),
+                new SqlParameter("@ez_transaction", transactionNumber),
+                new SqlParameter("@id_person", id_person),
+                new SqlParameter("@ez_status","99")
+
+            };
+
+            DatabaseHelper.DatabaseHelper.ExecStoreProcedure("sp_insert_transaction", param);
+
+            return Ok();
         }
         // GET: BuyFlightsController/Details/5
         public ActionResult Details(int id)
