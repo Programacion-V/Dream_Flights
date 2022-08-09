@@ -138,8 +138,7 @@ namespace Dream_Flights.Controllers
                     fli_number = Convert.ToInt16(row["fli_number"]),
                     air_name = row["air_name"].ToString(),
                     place = row["arr_origen"].ToString(),
-                    date = row["arr_date"].ToString(),
-                    time = row["arr_time"].ToString(),
+                    fulldate = row["fulldate"].ToString(),
                     door = row["arr_door"].ToString(),
                     description = row["sta_description"].ToString()
                 });
@@ -160,8 +159,7 @@ namespace Dream_Flights.Controllers
                     fli_number = Convert.ToInt16(row["fli_number"]),
                     air_name = row["air_name"].ToString(),
                     place = row["dep_destination"].ToString(),
-                    date = row["dep_date"].ToString(),
-                    time = row["dep_time"].ToString(),
+                    fulldate = row["fulldate"].ToString(),
                     door = row["dep_door"].ToString(),
                     description = row["sta_description"].ToString()
                 });

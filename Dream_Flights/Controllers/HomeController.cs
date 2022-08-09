@@ -29,6 +29,7 @@ namespace Dream_Flights.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user")))
             {
                 ViewBag.User = JsonSerializer.Deserialize<UserModel>(HttpContext.Session.GetString("user"));
+                ViewBag.PurchaseHistory = LoadPurchaseHistory(ViewBag.User.id_user);
 
 
                 return View();
@@ -103,6 +104,33 @@ namespace Dream_Flights.Controllers
             return RedirectToAction("Index", "Login");
         }
 
+        private List<PurchaseHistory> LoadPurchaseHistory(string id_user)
+        {
+            List<SqlParameter> param = new List<SqlParameter>()
+            {
+                new SqlParameter("@id_user", id_user)
+            };
+            DataTable ds = DatabaseHelper.DatabaseHelper.ExecuteStoreProcedure("sp_select_transaction_history", param);
+            List<PurchaseHistory> purchaseHistoriesList = new List<PurchaseHistory>();
+
+            foreach (DataRow row in ds.Rows)
+            {
+                purchaseHistoriesList.Add(new PurchaseHistory()
+                {
+                    id_flight = Convert.ToInt16(row["id_flight"]),
+                    air_name = row["air_name"].ToString(),
+                    fulldate = row["fulldate"].ToString(),
+                    dep_destination = row["dep_destination"].ToString(),
+                    ez_transaction = Convert.ToInt16(row["ez_transaction"]),
+                    price = row["price"].ToString(),
+                    quantity = row["quantity"].ToString(),
+                    amount = row["amount"].ToString(),
+                    status_description = row["status_description"].ToString()
+                });
+            }
+
+            return purchaseHistoriesList;
+        }
         public ActionResult GetPagesByRol(string id)
         {
             List<SqlParameter> param = new List<SqlParameter>()

@@ -64,7 +64,7 @@ namespace EasyPay.Controllers
                 }
                 if (response == "-4")
                 {
-                    return RedirectToAction("Payment", "EasyPay", new { @id = "Insufficient available funds/Amount over credit limit" });
+                    return RedirectToAction("Payment", "EasyPay", new { @id = "Insufficient available funds" });
                 }
             }
 

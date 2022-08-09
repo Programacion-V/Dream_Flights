@@ -27,15 +27,13 @@
         airline = data[1].innerHTML;
         destination = data[2].innerHTML;
         date = data[3].innerHTML;
-        time = data[4].innerHTML;
-        price = data[5].innerHTML;
+        price = data[4].innerHTML;
         $('#staticBackdrop').offcanvas('show');
         //alert("fly_number: " + fly_number + "\nairline: " + airline + "\ndestination: " + destination + "\ndate: " + date + "\ntime: " + time + "\nprice: " + price);
         $('#lblflyNumber').text(fly_number);
         $('#lblairline').text(airline);
         $('#lbldestination').text(destination);
         $('#lbldate').text(date);
-        $('#lbltime').text(time);
         $('#lblprice').text(price);
         $('#lblTotal').text(price);
         transactionNumber = $('#ez_transaction').text();
@@ -110,8 +108,9 @@
                             <th style="width:150px" scope="col">Flight Number </th>
                             <th style="width:150px" scope="col">Airline </th>
                             <th style="width:150px" scope="col">Destination </th>
-                            <th style="width:150px" scope="col">Date</th>
-                            <th style="width:150px" scope="col">Time</th>
+                            <th style="width:150px" scope="col">Date </th>
+                            @*<th style="width:150px" scope="col">Date</th>
+                            <th style="width:150px" scope="col">Time</th>*@
                             <th style="width:150px" scope="col">$</th>
                             <th style="width:60px" scope="col">Buy</th>
                         </tr>
@@ -123,8 +122,9 @@
                                 <td class="row-data" id="tdfly_@item.fli_number" style="width:150px">@item.fli_number</td>
                                 <td class="row-data" id="tdair_@item.fli_number" style="width:150px">@item.air_name</td>
                                 <td class="row-data" id="tddestination_@item.fli_number" style="width:150px">@item.destination</td>
-                                <td class="row-data" id="tddate_@item.fli_number" style="width:150px">@item.date</td>
-                                <td class="row-data" id="tdtime_@item.fli_number" style="width:150px">@item.time</td>
+                                <td class="row-data" id="tdfulldate_@item.fli_number" style="width:150px">@item.fulldate</td>
+                               @* <td class="row-data" id="tddate_@item.fli_number" style="width:150px">@item.date</td>
+                                <td class="row-data" id="tdtime_@item.fli_number" style="width:150px">@item.time</td>*@
                                 <td class="row-data" id="tdprice_@item.fli_number" style="width:150px">@item.price</td>
                                 <td>
                                     <button id="btn_@item.fli_number" class="btn btn-success" type="button" onclick="show(@item.fli_number)">
@@ -161,10 +161,6 @@
             <div class="mb-3">
               <label class="form-label">Date: </label>
               <b><label id="lbldate" class="form-label"></label></b>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Time :</label>
-              <b><label id="lbltime" class="form-label"></label></b>
             </div>
             <div class="mb-3">
               <label class="form-label">Price $ :</label>
