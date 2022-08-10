@@ -17,6 +17,9 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link text-light bg-dark border-dark" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><b>Contact</b></button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link text-light bg-dark border-dark" id="purchase_history-tab" data-bs-toggle="tab" data-bs-target="#purchase_history" type="button" role="tab" aria-controls="purchase_history" aria-selected="false"><b>Purchase History</b></button>
+                    </li>
                 </ul>
             <div class="tab-content tex bg-dark" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -102,7 +105,49 @@
                         </div>
                     </div>
                 </div>
+                <div class="tab-pane fade bg-dark border-0" id="purchase_history" role="tabpanel" aria-labelledby="purchase_history-tab">
+                    <div class="bg-dark border-0 d-flex justify-content-center align-items-center h-100">
+                        <div class="card mb-3 bg-dark border-0" style="width:100%; height: 100%; !important" >
+                            <div class="card-body bg-warning text-dark" style="border-radius:15px 15px;">
+                                <table class="table table-responsive table-hover table-fixed text-center" style="width:100%; height:380px"> 
+                                    <thead class="bg-dark text-light">
+                                        <tr style="width:100%">
+                                            <th scope="col">Easy Pay Transaction </th>
+                                            <th scope="col">Flight Number </th>
+                                            <th scope="col">Airline </th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Destination </th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+                                        @foreach (var item in ViewBag.PurchaseHistory)
+                                        {
+                                            <tr style="width:100%">
+                                                <td>@item.ez_transaction</td>
+                                                <td>@item.id_flight</td>
+                                                <td>@item.air_name</td>
+                                                <td>@item.fulldate</td>
+                                                <td>@item.dep_destination</td>
+                                                <td>@item.price</td>
+                                                <td>@item.quantity</td>
+                                                <td>@item.amount</td>
+                                                <td>@item.status_description</td>
+                                            </tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                             
+                            </div>
+                         </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
+
+@*asd*@

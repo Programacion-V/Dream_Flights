@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-@Html.Partial("userAccess")
+@Html.Partial("userAccess");
 
 <style>
 .table-fixed tbody{
@@ -28,7 +28,7 @@
 <body background="Images\wallpaper_1.jpg" style="background-size: cover;">
 
 <div class="container d-flex justify-content-center align-items-center h-100">
-    <div class="card border-0 table-fixed table-responsive text-center bg-dark" style="width:2500px; height:700px; margin-top:1%">
+    <div class="card border-0 table-fixed table-responsive text-center bg-dark" style="width:2500px; height:680px; margin-top:1%">
         <ul class="nav nav-tabs  bg-dark text-light" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active bg-dark text-light" id="countries-tab" data-bs-toggle="tab" data-bs-target="#countries" type="button" role="tab" aria-controls="home" aria-selected="true">Countries</button>
@@ -38,7 +38,8 @@
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="airlines" role="tabpanel" aria-labelledby="countries-tab">
+            
+            <div class="tab-pane fade show active" id="countries" role="tabpanel" aria-labelledby="countries-tab">
                 <div class="container-fluid">
                     <div class="row">
                         @foreach (var item in @ViewBag.CountriesModel)
@@ -54,6 +55,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="tab-pane fade" id="new_countries" role="tabpanel" aria-labelledby="new_countries-tab">
               <div class="container d-flex justify-content-center align-items-center h-100" style="width:70%; margin-top:1%">
                     <form method="post" action="@Url.Action("Save", "Countries")" enctype="multipart/form-data">
@@ -66,10 +68,10 @@
                                             <input type="text" id="cou_name" name="cou_name" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Country Name</label>
                                         </div>
-                                        <div class="form-outline mb-4">
+                                       @* <div class="form-outline mb-4">
                                             <input type="text" id="id_country" name="id_country" class="form-control" required />
                                             <label class="form-label" for="form6Example4">Country Code</label>
-                                        </div>
+                                        </div>*@
                                         <div class="form-outline mb-4">
                                             <div class="file-upload-wrapper">
                                                 <input type="file" id="photo" name="photo" class="form-control" />
@@ -89,6 +91,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </body>

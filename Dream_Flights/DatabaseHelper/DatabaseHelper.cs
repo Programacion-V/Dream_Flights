@@ -9,7 +9,11 @@ namespace Dream_Flights.DatabaseHelper
 {
     public class DatabaseHelper
     {
-        const string servidor = @"LAPTOP-KK5T2UNQ\SQLEXPRESS";
+
+        //Chris - CHRISTOPHER\SQLEXPRESS02
+        //steven HEBI
+
+        const string servidor = @"HEBI"; 
         const string baseDatos = "programacion_5";
         const string strConexion = "Data Source=" + servidor + ";Initial Catalog=" + baseDatos + ";Integrated Security=True";
 

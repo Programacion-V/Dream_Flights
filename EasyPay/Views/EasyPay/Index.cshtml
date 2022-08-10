@@ -5,6 +5,8 @@
 <div class="container">
     <h1 class="display-4">EasyPay</h1>
     <form asp-controller="EasyPay" asp-action="ExecutePay"> 
+        <label id="ez_transaction" class="form-control" name="ez_transaction">@ViewBag.TransactionNumber</label>
+        <input type="text" class="form-control" id="ez_transaction" name="ez_transaction" value="@ViewBag.TransactionNumber" readonly>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="Amount" name="Amount" value="@ViewBag.Amount" readonly>
             <label for="floatingInput">Amount</label>
@@ -29,7 +31,7 @@
             <input type="text" class="form-control" id="floatingInput" name="CVV">
             <label for="floatingInput">CVV</label>
         </div>
-        <div class="form-floating">            
+        <div class="form-floating" style="margin-top:5px">            
             <button type="submit" class="btn btn-primary" style="float:left"><b>Pay!</b></button>
         </div>
     </form>
